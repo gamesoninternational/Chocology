@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "571947708769",
+    "firebase_url": "https://cla-001.firebaseio.com",
+    "project_id": "cla-001",
+    "storage_bucket": "cla-001.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571947708769:android:415d029ca22e8cf0f09520",
+        "android_client_info": {
+          "package_name": "com.cla.tileworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571947708769-713l9hfdmvuhshm6kt07u7s91g90qn0u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cla.tileworld",
+            "certificate_hash": "6eeeaa0a863e4280bba4b41f6f2a6d3287807120"
+          }
+        },
+        {
+          "client_id": "571947708769-kqbtvogn8nafc3vuuava7v89ejon2951.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpU7p8ABe4qO2uSAjxGNCQDogTK3RkSUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571947708769-kqbtvogn8nafc3vuuava7v89ejon2951.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "571947708769-dnmbvk83g5srs0pbr6sarq763144vv91.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.MiniBox.TileWorld"
+              }
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-9179752697212712~8500761841"
+    }
+  ],
+  "configuration_version": "1"
+}
