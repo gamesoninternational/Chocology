@@ -78,7 +78,7 @@ public class GamePlayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        API.ShowBanner(BannerPosition.Bottom, BannerType.Banner);
+        API.ShowBanner(Gley.MobileAds.BannerPosition.Bottom, Gley.MobileAds.BannerType.Banner);
         lockGroup.SetActive(true);
         isRevive = false;
 
