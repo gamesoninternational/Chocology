@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using Gley.MobileAds;
+using BsplabsMobileAds;
+
 public class FreeItemPopup : MonoBehaviour
 {
     public static FreeItemPopup instance;
@@ -120,7 +122,7 @@ public class FreeItemPopup : MonoBehaviour
         lockGroup.gameObject.SetActive(false);
         popup.gameObject.SetActive(false);
         btnWatchAds.gameObject.SetActive(false);
-        if (API.IsRewardedVideoAvailable())
+        if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable())
         {
             btnWatchAds.Interactable = true;
         }

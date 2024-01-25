@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Gley.MobileAds;
+using BsplabsMobileAds;
+
 public class LosePopup : MonoBehaviour
 {
     public static LosePopup instance;
@@ -137,7 +139,7 @@ public class LosePopup : MonoBehaviour
         popup.gameObject.SetActive(false);
 
         btnRevive.gameObject.SetActive(false);
-        if (API.IsRewardedVideoAvailable() && !isRevive)
+        if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable() && !isRevive)
         {
             btnRevive.Interactable = true;
         }

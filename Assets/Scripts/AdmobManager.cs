@@ -16,6 +16,7 @@ using UnityEngine.UI;
 using System;
 //using GoogleMobileAds.Api;
 using Gley.MobileAds;
+using BsplabsMobileAds;
 
 public class AdmobManager : MonoBehaviour
 {
@@ -42,7 +43,8 @@ public class AdmobManager : MonoBehaviour
     {
 
 
-        API.Initialize();
+        //API.Initialize();
+        BspLabsAdsMobile.Instance.Initialize();
 
       //  Debug.Log("GDPR status check :" + API.GDPRConsentWasSet());
         if (!API.GDPRConsentWasSet())

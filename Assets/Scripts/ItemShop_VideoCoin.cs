@@ -11,6 +11,8 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using Gley.MobileAds;
+using BsplabsMobileAds;
+
 public class ItemShop_VideoCoin : MonoBehaviour
 {
     [Header("ITEM SHOP DATA")]
@@ -42,9 +44,10 @@ public class ItemShop_VideoCoin : MonoBehaviour
     private void TouchBuy()
     {
         lockGroup.SetActive(true);
-        if (API.IsRewardedVideoAvailable())
+        if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable())
         {
             API.ShowRewardedVideo(CompleteMethod);
+            BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
 
         }
         else

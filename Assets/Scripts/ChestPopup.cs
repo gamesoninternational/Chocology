@@ -12,6 +12,8 @@ using DG.Tweening;
 using UnityEngine.UI;
 using bonbon;
 using Gley.MobileAds;
+using BsplabsMobileAds;
+
 public class ChestPopup : MonoBehaviour
 {
     public static ChestPopup instance;
@@ -134,8 +136,8 @@ public class ChestPopup : MonoBehaviour
         lockGroup.gameObject.SetActive(true);
 
         API.ShowRewardedVideo(CompleteMethod);
+        BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
 
-       
     }
 
 
@@ -180,7 +182,7 @@ public class ChestPopup : MonoBehaviour
         lockGroup.gameObject.SetActive(false);
         popup.gameObject.SetActive(false);
         btnWatchAds.gameObject.SetActive(false);
-        if (API.IsRewardedVideoAvailable())
+        if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable())
         {
             btnWatchAds.Interactable = true;
         }

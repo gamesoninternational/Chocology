@@ -12,6 +12,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Gley.MobileAds;
+using BsplabsMobileAds;
 
 public class WinPopup2 : MonoBehaviour
 {
@@ -285,10 +286,11 @@ public class WinPopup2 : MonoBehaviour
     {
         lockGroup.SetActive(true);
         DOTween.Kill(sliderReward);
-        if (API.IsRewardedVideoAvailable())
+        if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable())
         {
 
            API.ShowRewardedVideo(CompleteMethod);
+           BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
 
 
         }

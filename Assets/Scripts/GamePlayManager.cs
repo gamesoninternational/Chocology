@@ -12,6 +12,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Gley.MobileAds;
+using BsplabsMobileAds;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -78,7 +79,8 @@ public class GamePlayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        API.ShowBanner(Gley.MobileAds.BannerPosition.Bottom, Gley.MobileAds.BannerType.Banner);
+        //API.ShowBanner(Gley.MobileAds.BannerPosition.Bottom, Gley.MobileAds.BannerType.Banner);
+        BspLabsAdsMobile.Instance.ShowBanner(BannerPosition.BOTTOM, BannerType.Banner);
         lockGroup.SetActive(true);
         isRevive = false;
 

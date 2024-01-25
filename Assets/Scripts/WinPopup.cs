@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Gley.MobileAds;
+using BsplabsMobileAds;
+
 public class WinPopup : MonoBehaviour
 {
     public static WinPopup instance;
@@ -374,7 +376,7 @@ public class WinPopup : MonoBehaviour
         else
         {
             btnChest.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
-            if (API.IsRewardedVideoAvailable())
+            if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable())
             {
                 btnChest.Interactable = true;
                 ShowChestButtonWathcVideoAvaiable();

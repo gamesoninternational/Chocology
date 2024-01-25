@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using DG.Tweening;
 using Gley.MobileAds;
+using BsplabsMobileAds;
 
 public class GameLevelManager : MonoBehaviour
 {
@@ -442,6 +443,7 @@ public class GameLevelManager : MonoBehaviour
         {
             Config.interstitialAd_countWin = 0;
             API.ShowInterstitial();
+            BspLabsAdsMobile.Instance.ShowInterstitial();
         }
             
         //Debug.LogError("GAME WIN");

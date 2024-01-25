@@ -5,6 +5,8 @@ using DG.Tweening;
 using UnityEngine.UI;
 using bonbon;
 using Gley.MobileAds;
+using BsplabsMobileAds;
+
 public class SpinPopup : MonoBehaviour
 {
     public static SpinPopup instance;
@@ -93,7 +95,8 @@ public class SpinPopup : MonoBehaviour
         btnWatchAds.Interactable = false;
         lockGroup.gameObject.SetActive(true);
 
-        API.ShowRewardedVideo(CompleteMethod);
+        //API.ShowRewardedVideo(CompleteMethod);
+        BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
 
         
     }
