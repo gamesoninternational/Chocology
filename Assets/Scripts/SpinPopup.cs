@@ -8,7 +8,6 @@ using Gley.MobileAds;
 using BsplabsMobileAds;
 using System;
 using Random = UnityEngine.Random;
-using NotificationSamples.Demo;
 
 public class SpinPopup : MonoBehaviour
 {
@@ -114,7 +113,9 @@ public class SpinPopup : MonoBehaviour
             WatchAds_Finished();
 
             //reset notification
-            NotificationConsole.Instance.SendNotification("Free Lucky Spin Is Available", "You can now spin your free lucky spin!!", DateTime.Now.AddSeconds(20));
+            var currentLastTime = Config.GetSpinLastTime();
+            DateTime time = DateTime.FromBinary(currentLastTime + Config.TIME_SPIN - Config.GetTimeStamp());
+            GlobalVar.CreateSpinClaimNotification(time);
 
         }
         else

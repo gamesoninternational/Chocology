@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Unity.Notifications.Android;
-using NotificationSamples.Demo;
 using System;
 
 public class SpinButtonManager : MonoBehaviour
@@ -12,7 +11,7 @@ public class SpinButtonManager : MonoBehaviour
     private BBUIButton buttonSpin;
     public Image icon;
     public CountDownTimeGroup countDownTimeGroup;
-    public NotificationConsole console;
+
     private void Awake()
     {
         buttonSpin = GetComponent<BBUIButton>();

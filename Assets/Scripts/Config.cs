@@ -228,8 +228,9 @@ public class Config
     public static int SPIN_PRICE = 150;
     public static long GetTimeStamp()
     {
+        Debug.Log(TimerFromServer.instance.dateTimeNowOnServer.Subtract(new DateTime(2020, 1, 1)).TotalSeconds + " THIS UTC NOW : " + DateTime.UtcNow.Subtract(new DateTime(2020, 1, 1)).TotalSeconds);
+        return (long)(TimerFromServer.instance.dateTimeNowOnServer.Subtract(new DateTime(2020, 1, 1))).TotalSeconds;
 
-        return (long)(DateTime.UtcNow.Subtract(new DateTime(2020, 1, 1))).TotalSeconds;
     }
 
     public const int TIME_SPIN = 24 * 60 * 60;//1 * 60 * 60;

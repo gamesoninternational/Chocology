@@ -485,6 +485,8 @@ public class GamePlayManager : MonoBehaviour
             if (level >= 15 && level % 5 == 0 && !Config.GetRate()) {
                 OpenRatePopup();
             }
+
+            GlobalVar.CallAnalytics("end_game");
         }
     }
 

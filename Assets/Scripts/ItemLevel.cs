@@ -28,6 +28,7 @@ public class ItemLevel : MonoBehaviour
     public void TouchLevel() {
         
         LevelPopup.instance.SelectLevel(infoLevel);
+        GlobalVar.CallAnalytics("start_game");
     }
 
 

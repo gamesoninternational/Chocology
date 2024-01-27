@@ -257,6 +257,7 @@ public class MenuManager : MonoBehaviour
         //    SceneManager.LoadScene("Play");
         //});
         SceneManager.LoadSceneAsync("Play");
+        GlobalVar.CallAnalytics("start_game");
     }
 
     [Header("SHOP")]
