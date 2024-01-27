@@ -6,6 +6,9 @@ using UnityEngine.UI;
 using bonbon;
 using Gley.MobileAds;
 using BsplabsMobileAds;
+using System;
+using Random = UnityEngine.Random;
+using NotificationSamples.Demo;
 
 public class SpinPopup : MonoBehaviour
 {
@@ -80,6 +83,7 @@ public class SpinPopup : MonoBehaviour
         {
             Config.SetCoin(Config.currCoin - Config.SPIN_PRICE);
             WatchAds_Finished();
+            
         }
         else
         {
@@ -108,6 +112,10 @@ public class SpinPopup : MonoBehaviour
             lockGroup.gameObject.SetActive(false);
             //WatchAds
             WatchAds_Finished();
+
+            //reset notification
+            NotificationConsole.Instance.SendNotification("Free Lucky Spin Is Available", "You can now spin your free lucky spin!!", DateTime.Now.AddSeconds(20));
+
         }
         else
         {

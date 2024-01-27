@@ -193,7 +193,7 @@ public class LosePopup2 : MonoBehaviour
 
         if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable())
         {
-            API.ShowRewardedVideo(CompleteMethod);
+            //API.ShowRewardedVideo(CompleteMethod);
             BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
 
         }

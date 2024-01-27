@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Unity.Notifications.Android;
+using NotificationSamples.Demo;
+using System;
+
 public class SpinButtonManager : MonoBehaviour
 {
     private BBUIButton buttonSpin;
     public Image icon;
     public CountDownTimeGroup countDownTimeGroup;
+    public NotificationConsole console;
     private void Awake()
     {
         buttonSpin = GetComponent<BBUIButton>();
@@ -70,6 +75,8 @@ public class SpinButtonManager : MonoBehaviour
         else
         {
             ShowSpinButtonAvaiable();
+            DateTime time = DateTime.FromBinary(currTimeLastTime + Config.TIME_SPIN - Config.GetTimeStamp());
+            
         }
        
     }
@@ -91,10 +98,10 @@ public class SpinButtonManager : MonoBehaviour
             sequence_SpinButton.Kill();
         }
         sequence_SpinButton = DOTween.Sequence();
-        sequence_SpinButton.Insert(0f, icon.transform.DOPunchPosition(new Vector3(5f, 5f, 0.1f), Random.Range(1f, 2f), 5, 1).SetEase(Ease.InBounce));
-        sequence_SpinButton.Insert(0f, icon.transform.DOPunchRotation(new Vector3(0f, 0f, 10f), Random.Range(1f, 2f), 5, 1).SetEase(Ease.InOutBack));
-        sequence_SpinButton.Insert(0f, icon.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), Random.Range(1f, 2f), 5, 1).SetEase(Ease.InBounce));
-        sequence_SpinButton.Insert(2f, icon.transform.DOScale(1.1f, Random.Range(0.5f, 1f)).SetEase(Ease.Linear).SetLoops(Random.Range(2, 4), LoopType.Yoyo));
+        sequence_SpinButton.Insert(0f, icon.transform.DOPunchPosition(new Vector3(5f, 5f, 0.1f), UnityEngine.Random.Range(1f, 2f), 5, 1).SetEase(Ease.InBounce));
+        sequence_SpinButton.Insert(0f, icon.transform.DOPunchRotation(new Vector3(0f, 0f, 10f), UnityEngine.Random.Range(1f, 2f), 5, 1).SetEase(Ease.InOutBack));
+        sequence_SpinButton.Insert(0f, icon.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), UnityEngine.Random.Range(1f, 2f), 5, 1).SetEase(Ease.InBounce));
+        sequence_SpinButton.Insert(2f, icon.transform.DOScale(1.1f, UnityEngine.Random.Range(0.5f, 1f)).SetEase(Ease.Linear).SetLoops(UnityEngine.Random.Range(2, 4), LoopType.Yoyo));
         sequence_SpinButton.SetLoops(-1, LoopType.Yoyo);
     }
 }

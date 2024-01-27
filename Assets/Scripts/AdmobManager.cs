@@ -47,10 +47,10 @@ public class AdmobManager : MonoBehaviour
         BspLabsAdsMobile.Instance.Initialize();
 
       //  Debug.Log("GDPR status check :" + API.GDPRConsentWasSet());
-        if (!API.GDPRConsentWasSet())
-        {
-            API.ShowBuiltInConsentPopup(PopupClosed);
-        }
+        //if (!API.GDPRConsentWasSet())
+        //{
+        //    API.ShowBuiltInConsentPopup(PopupClosed);
+        //}
 
     }
 
