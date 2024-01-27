@@ -67,13 +67,13 @@ public class WinPopup : MonoBehaviour
                     itemShopRemoveAd.SetActive(false);
                 }
 
-                GlobalVar.CallAnalytics("payment_success");
+                GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_success");
             }
             else
             {
                 lockGroup.gameObject.SetActive(false);
                 NotificationPopup.instance.AddNotification("Buy Fail!");
-                GlobalVar.CallAnalytics("payment_failed");
+                GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_failed");
             }
         });
     }

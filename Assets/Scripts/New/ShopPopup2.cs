@@ -187,14 +187,14 @@ public class ShopPopup2 : MonoBehaviour
                     BuyPackSuccess(configPackData);
                 }
 
-                GlobalVar.CallAnalytics("payment_success");
+                GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_success");
             }
             else
             {
                 Debug.Log("Buy Fail!Buy Fail!Buy Fail!Buy Fail!Buy Fail!");
                 lockGroup.gameObject.SetActive(false);
                 NotificationPopup.instance.AddNotification("Buy Fail!");
-                GlobalVar.CallAnalytics("payment_failed");
+                GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_failed");
             }
         });
 
