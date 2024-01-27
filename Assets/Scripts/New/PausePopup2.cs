@@ -137,6 +137,7 @@ public class PausePopup2 : MonoBehaviour
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene("Menu");
+            GlobalVar.CallAnalytics("end_game_not_finished");
         }
     }
     

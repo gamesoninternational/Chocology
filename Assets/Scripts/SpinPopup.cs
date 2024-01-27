@@ -149,6 +149,8 @@ public class SpinPopup : MonoBehaviour
             MenuManager.instance.OpenRewardPopup(new List<ConfigItemShopData>() { listSpinDatas[indexResult] });
             //GamePlayManager.instance.OpenRewardPopup(new List<ConfigItemShopData>() { listSpinDatas[indexResult] });
         });
+
+        GlobalVar.CallAnalytics("play_spin");
     }
 
     public void HidePopup_Finished()
