@@ -113,10 +113,8 @@ public class SpinPopup : MonoBehaviour
             WatchAds_Finished();
 
             //reset notification
-            var currentLastTime = Config.GetSpinLastTime();
-            DateTime time = DateTime.FromBinary(currentLastTime + Config.TIME_SPIN - Config.GetTimeStamp());
-            GlobalVar.CreateSpinClaimNotification(time);
-
+            GlobalVar.CreateSpinClaimNotification(TimerFromServer.instance.dateTimeNowOnServer.AddSeconds(Config.TIME_SPIN));
+            Debug.Log("Message Will appear in : " + Config.TIME_SPIN +"h");
         }
         else
         {
