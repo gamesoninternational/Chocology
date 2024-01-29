@@ -20,25 +20,25 @@ MonoBehaviour:
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 80
-      weightiOS: 80
-      weightWindows: 80
+      weightAndroid: 100
+      weightiOS: 100
+      weightWindows: 100
     interstitialSettings:
       adType: 2
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 80
-      weightiOS: 80
-      weightWindows: 80
+      weightAndroid: 100
+      weightiOS: 100
+      weightWindows: 100
     rewardedSettings:
       adType: 3
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 80
-      weightiOS: 80
-      weightWindows: 80
+      weightAndroid: 100
+      weightiOS: 100
+      weightWindows: 100
   - advertiser: 9
     advertiserName: IronSource
     bannerSettings:
@@ -46,25 +46,25 @@ MonoBehaviour:
       orderAndroid: 4
       orderiOS: 4
       orderWindows: 4
-      weightAndroid: 63
-      weightiOS: 63
-      weightWindows: 63
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
     interstitialSettings:
       adType: 2
       orderAndroid: 4
       orderiOS: 4
       orderWindows: 4
-      weightAndroid: 62
-      weightiOS: 62
-      weightWindows: 62
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
     rewardedSettings:
       adType: 3
       orderAndroid: 4
       orderiOS: 4
       orderWindows: 4
-      weightAndroid: 62
-      weightiOS: 62
-      weightWindows: 62
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
   - advertiser: 4
     advertiserName: Unity
     bannerSettings:
@@ -72,25 +72,25 @@ MonoBehaviour:
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 41
-      weightiOS: 41
-      weightWindows: 41
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
     interstitialSettings:
       adType: 2
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 41
-      weightiOS: 41
-      weightWindows: 41
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
     rewardedSettings:
       adType: 3
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 41
-      weightiOS: 41
-      weightWindows: 41
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
   - advertiser: 6
     advertiserName: AppLovin
     bannerSettings:
@@ -98,25 +98,25 @@ MonoBehaviour:
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 21
-      weightiOS: 21
-      weightWindows: 21
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
     interstitialSettings:
       adType: 2
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
     rewardedSettings:
       adType: 3
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 24
-      weightiOS: 24
-      weightWindows: 24
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
   advertiserSettings:
   - advertiser: 2
     useSDK: 0
@@ -179,15 +179,15 @@ MonoBehaviour:
         displayName: App ID
         notRequired: 0
       idBanner:
-        id: ca-app-pub-3949237800163961/6373572398
+        id: ca-app-pub-3940256099942544/6300978111
         displayName: Banner ID
         notRequired: 0
       idInterstitial:
-        id: ca-app-pub-3949237800163961/9494559756
+        id: ca-app-pub-3940256099942544/1033173712
         displayName: Interstitial ID
         notRequired: 0
       idRewarded:
-        id: ca-app-pub-3949237800163961/8179663997
+        id: ca-app-pub-3940256099942544/5224354917
         displayName: Rewarded Video ID
         notRequired: 0
       hasBanner: 1
@@ -201,15 +201,15 @@ MonoBehaviour:
         displayName: App ID
         notRequired: 0
       idBanner:
-        id: ca-app-pub-3949237800163961/3568048297
+        id: ca-app-pub-3940256099942544/6300978111
         displayName: Banner ID
         notRequired: 0
       idInterstitial:
-        id: ca-app-pub-3949237800163961/8628803283
+        id: ca-app-pub-3940256099942544/1033173712
         displayName: Interstitial ID
         notRequired: 0
       idRewarded:
-        id: ca-app-pub-3949237800163961/1218857174
+        id: ca-app-pub-3940256099942544/5224354917
         displayName: Rewarded Video ID
         notRequired: 0
       hasBanner: 1
