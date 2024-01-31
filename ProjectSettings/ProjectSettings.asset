@@ -166,7 +166,7 @@ PlayerSettings:
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 33
+  AndroidTargetSdkVersion: 34
   AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
@@ -246,7 +246,7 @@ PlayerSettings:
   clonedFromGUID: c0afd0d1d80e3634a9dac47e8a0426ea
   templatePackageId: com.unity.template.3d@4.2.8
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  useCustomMainManifest: 0
+  useCustomMainManifest: 1
   useCustomLauncherManifest: 0
   useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0
@@ -820,7 +820,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: ODIN_INSPECTOR;dUI_MANAGER;GLEY_ADMOB;GLEY_PATCH_ADMOB;USE_ADMOB_BSPLABS;USE_UNITYADS_BSPLABS;USE_IRONSOURCE_BSPLABS;USE_ADMOB_BSPLABS_PATCH;USE_APPLOVIN_BSPLABS
+    Android: ODIN_INSPECTOR;dUI_MANAGER;GLEY_ADMOB;GLEY_PATCH_ADMOB;USE_ADMOB_BSPLABS;USE_UNITYADS_BSPLABS;USE_IRONSOURCE_BSPLABS;USE_ADMOB_BSPLABS_PATCH;USE_APPLOVIN_BSPLABS;CLOUDONCE_GOOGLE
     CloudRendering: dUI_MANAGER
     EmbeddedLinux: dUI_MANAGER
     GameCoreScarlett: dUI_MANAGER
@@ -936,7 +936,7 @@ PlayerSettings:
     ErrorHub: 0
     Game Performance: 0
     Hub: 0
-    Purchasing: 1
+    Purchasing: 0
     UDP: 0
     UNet: 1
     Unity Ads: 0
@@ -959,11 +959,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: bc344eb9-a5ee-44ce-9a92-3279c0ce7269
+  cloudProjectId: c5da70ed-3e4d-4343-95b5-07baa7f023f5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Tile World
-  organizationId: kenhaui
+  projectName: Chocology
+  organizationId: unity_1795ab3be46258f3c673
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

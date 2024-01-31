@@ -11,17 +11,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gley.MobileAds;
+using CloudOnce;
 
 public class Config
 {
-    public enum THEME_TYPE {
+    public enum THEME_TYPE
+    {
         fruits,
         test
     }
     public static bool isShowStarterPack = true;
     public static THEME_TYPE currTheme = THEME_TYPE.fruits;
 
-    public enum ITEM_TYPE {
+    public enum ITEM_TYPE
+    {
         ITEM_1 = 1,
         ITEM_2 = 2,
         ITEM_3 = 3,
@@ -44,14 +47,16 @@ public class Config
         ITEM_20 = 20
     }
 
-    public enum START_MOVE_TYPE {
+    public enum START_MOVE_TYPE
+    {
         TOP,
         LEFT,
         RIGHT,
         BOTTOM
     }
 
-    public enum ITEMTILE_STATE {
+    public enum ITEMTILE_STATE
+    {
         START,
         START_TO_FLOOR,
         FLOOR,
@@ -84,13 +89,15 @@ public class Config
     }
 
 
-    public static void SetCount_ItemHelp(ITEMHELP_TYPE itemHelpType, int count) {
+    public static void SetCount_ItemHelp(ITEMHELP_TYPE itemHelpType, int count)
+    {
         PlayerPrefs.SetInt(itemHelpType.ToString(), count);
         PlayerPrefs.Save();
     }
 
-    public static int GetCount_ItemHelp(ITEMHELP_TYPE itemHelpType) {
-        if(itemHelpType == ITEMHELP_TYPE.UNDO)
+    public static int GetCount_ItemHelp(ITEMHELP_TYPE itemHelpType)
+    {
+        if (itemHelpType == ITEMHELP_TYPE.UNDO)
             return PlayerPrefs.GetInt(itemHelpType.ToString(), 3);
         if (itemHelpType == ITEMHELP_TYPE.SHUFFLE)
             return PlayerPrefs.GetInt(itemHelpType.ToString(), 4);
@@ -102,14 +109,16 @@ public class Config
     public const string COIN = "coin";
     public static event Action<int> OnChangeCoin = delegate (int _coin) { };
     public static int currCoin;
-    public static void SetCoin(int coinValue) {
+    public static void SetCoin(int coinValue)
+    {
         PlayerPrefs.SetInt(COIN, coinValue);
         PlayerPrefs.Save();
         currCoin = coinValue;
         OnChangeCoin(coinValue);
     }
 
-    public static int GetCoin() {
+    public static int GetCoin()
+    {
         return PlayerPrefs.GetInt(COIN, 100);
     }
     #endregion
@@ -123,8 +132,10 @@ public class Config
         SHUFFLE
     }
 
-    public static void BuySucces_ItemShop(ConfigItemShopData itemShopData) {
-        if (itemShopData.shopItemType == SHOPITEM.UNDO) {
+    public static void BuySucces_ItemShop(ConfigItemShopData itemShopData)
+    {
+        if (itemShopData.shopItemType == SHOPITEM.UNDO)
+        {
             SetCount_ItemHelp(ITEMHELP_TYPE.UNDO, GetCount_ItemHelp(ITEMHELP_TYPE.UNDO) + itemShopData.countItem);
         }
         else if (itemShopData.shopItemType == SHOPITEM.SHUFFLE)
@@ -142,7 +153,8 @@ public class Config
     }
 
 
-    public static SHOPITEM ConvertItemHelpTypeToShopItem(ITEMHELP_TYPE itemHelpType) {
+    public static SHOPITEM ConvertItemHelpTypeToShopItem(ITEMHELP_TYPE itemHelpType)
+    {
         if (itemHelpType == ITEMHELP_TYPE.UNDO)
         {
             return SHOPITEM.UNDO;
@@ -151,14 +163,18 @@ public class Config
         {
             return SHOPITEM.SUGGEST;
         }
-        else {
+        else
+        {
             return SHOPITEM.SHUFFLE;
         }
     }
 
-    public static int GetCountItem_Pack_ItemType(SHOPITEM shopItemType, ConfigPackData configPackData) {
-        for (int i = 0; i < configPackData.configItemShopDatas.Count; i++) {
-            if (configPackData.configItemShopDatas[i].shopItemType == shopItemType) {
+    public static int GetCountItem_Pack_ItemType(SHOPITEM shopItemType, ConfigPackData configPackData)
+    {
+        for (int i = 0; i < configPackData.configItemShopDatas.Count; i++)
+        {
+            if (configPackData.configItemShopDatas[i].shopItemType == shopItemType)
+            {
                 return configPackData.configItemShopDatas[i].countItem;
             }
         }
@@ -169,25 +185,29 @@ public class Config
 
     public const string SOUND = "sound";
     public static bool isSound = true;
-    public static void SetSound(bool _isSound) {
+    public static void SetSound(bool _isSound)
+    {
         isSound = _isSound;
         if (_isSound)
         {
             PlayerPrefs.SetInt(SOUND, 1);
         }
-        else {
+        else
+        {
             PlayerPrefs.SetInt(SOUND, 0);
         }
         PlayerPrefs.Save();
     }
 
-    public static void GetSound() {
+    public static void GetSound()
+    {
         int soundInt = PlayerPrefs.GetInt(SOUND, 1);
         if (soundInt == 1)
         {
             isSound = true;
         }
-        else {
+        else
+        {
             isSound = false;
         }
     }
@@ -236,7 +256,8 @@ public class Config
     public const int TIME_SPIN = 24 * 60 * 60;//1 * 60 * 60;
     public const string SPIN_LASTTIME = "spin_lastTime";
     public static event Action OnChangeSpin_LastTime = delegate () { };
-    public static void SetSpin_LastTime() {
+    public static void SetSpin_LastTime()
+    {
         long timeStamp = GetTimeStamp();
         PlayerPrefs.SetString(SPIN_LASTTIME, timeStamp + "");
         PlayerPrefs.Save();
@@ -244,7 +265,8 @@ public class Config
         OnChangeSpin_LastTime();
     }
 
-    public static long GetSpinLastTime() {
+    public static long GetSpinLastTime()
+    {
         string lastTime = PlayerPrefs.GetString(SPIN_LASTTIME, "0");
         return long.Parse(lastTime);
     }
@@ -278,12 +300,14 @@ public class Config
     public static event Action OnChange_PiggyBank_Coin = delegate () { };
     public static void AddPiggyBank_Coin()
     {
-        if (currPiggyBankCoin <= PIGGYBANK_COIN_MAX) {
+        if (currPiggyBankCoin <= PIGGYBANK_COIN_MAX)
+        {
             currPiggyBankCoin += ADD_PIGGYBANK_COIN;
             SetPiggyBank(currPiggyBankCoin);
         }
     }
-    public static void SetPiggyBank(int piggyBankCoin) {
+    public static void SetPiggyBank(int piggyBankCoin)
+    {
 
         currPiggyBankCoin = piggyBankCoin;
         PlayerPrefs.SetInt(PIGGYBANK, piggyBankCoin);
@@ -292,7 +316,8 @@ public class Config
         OnChange_PiggyBank_Coin();
     }
 
-    public static int GetPiggyBank() {
+    public static int GetPiggyBank()
+    {
         return PlayerPrefs.GetInt(PIGGYBANK, 0);
     }
 
@@ -303,13 +328,15 @@ public class Config
     #region STAR_CHEST
     public const string CHEST_STAR = "chest_countStar";
     public static int CHEST_STAR_MAX = 15;
-    public static void SetChestCountStar(int _countStar) {
+    public static void SetChestCountStar(int _countStar)
+    {
         if (_countStar >= CHEST_STAR_MAX) _countStar = CHEST_STAR_MAX;
         PlayerPrefs.SetInt(CHEST_STAR, _countStar);
         PlayerPrefs.Save();
     }
 
-    public static int GetChestCountStar() {
+    public static int GetChestCountStar()
+    {
         return PlayerPrefs.GetInt(CHEST_STAR, 0);
     }
     #endregion
@@ -328,12 +355,14 @@ public class Config
                 currDic_LevelStars[level] = star;
             }
         }
-        else {
+        else
+        {
             currDic_LevelStars.Add(level, star);
         }
 
         List<string> listStrLevel = new List<string>();
-        foreach (KeyValuePair<int, int> kvp in currDic_LevelStars) {
+        foreach (KeyValuePair<int, int> kvp in currDic_LevelStars)
+        {
             listStrLevel.Add(kvp.Key + "_" + kvp.Value);
         }
         Debug.Log(JsonMapper.ToJson(listStrLevel));
@@ -341,9 +370,11 @@ public class Config
         PlayerPrefs.Save();
     }
 
-    public static void GetLevelStar() {
+    public static void GetLevelStar()
+    {
         currDic_LevelStars.Clear();
-        if (PlayerPrefs.HasKey(LEVEL_STAR)) {
+        if (PlayerPrefs.HasKey(LEVEL_STAR))
+        {
             string strlevelStar = PlayerPrefs.GetString(LEVEL_STAR);
 
             JsonData jsonData = JsonMapper.ToObject(strlevelStar);
@@ -366,7 +397,8 @@ public class Config
         return stars;
     }
 
-    public static int GetCountStars() {
+    public static int GetCountStars()
+    {
         int countStar = 0;
         foreach (KeyValuePair<int, int> kvp in currDic_LevelStars)
         {
@@ -385,16 +417,21 @@ public class Config
 
     public static int currLevel = 1;
 
-    public static void SetCurrLevel(int _currLevel) {
+    public static void SetCurrLevel(int _currLevel)
+    {
         if (_currLevel > currLevel)
         {
             currLevel = _currLevel;
             PlayerPrefs.SetInt(CURR_LEVEL, _currLevel);
             PlayerPrefs.Save();
+
+            //set leaderboard
+            Leaderboards.ChocologyLeaderboard.SubmitScore(currLevel);
         }
     }
 
-    public static void GetCurrLevel() {
+    public static void GetCurrLevel()
+    {
         currLevel = PlayerPrefs.GetInt(CURR_LEVEL, 1);
     }
     #endregion
@@ -402,12 +439,15 @@ public class Config
 
     #region TUTORIAL
     public const string TUT_1 = "tut_1";
-    public static void SetTut_1_Finished() {
+    public static void SetTut_1_Finished()
+    {
         PlayerPrefs.SetInt(TUT_1, 1);
         PlayerPrefs.Save();
     }
-    public static bool GetTut_1_Finished() {
-        if (PlayerPrefs.GetInt(TUT_1, 0) == 1) {
+    public static bool GetTut_1_Finished()
+    {
+        if (PlayerPrefs.GetInt(TUT_1, 0) == 1)
+        {
             return true;
         }
         return false;
@@ -415,8 +455,10 @@ public class Config
 
 
 
-    public static bool CheckTutorial_1() {
-        if (GamePlayManager.instance.level == 1 && !GetTut_1_Finished()) {
+    public static bool CheckTutorial_1()
+    {
+        if (GamePlayManager.instance.level == 1 && !GetTut_1_Finished())
+        {
             return true;
         }
         return false;
@@ -505,7 +547,8 @@ public class Config
     }
 
 
-    public enum TUT { 
+    public enum TUT
+    {
         TUT_NEXTLEVEL_LEVEL1,
         TUT_TOUCHSPIN_LEVEL5
     }
@@ -560,16 +603,18 @@ public class Config
         coin_5000,
         tile_special_offer,
     }
-    
+
     #region IAP
     public const string IAP = "iap_";
 
-    public static void SetBuyIAP(IAP_ID idPack) {
+    public static void SetBuyIAP(IAP_ID idPack)
+    {
         PlayerPrefs.SetInt(IAP + idPack.ToString(), 1);
         PlayerPrefs.Save();
     }
 
-    public static bool GetBuyIAP(IAP_ID idPack) {
+    public static bool GetBuyIAP(IAP_ID idPack)
+    {
         int buyed = PlayerPrefs.GetInt(IAP + idPack.ToString(), 0);
         if (buyed == 1) return true;
         return false;
@@ -577,29 +622,33 @@ public class Config
     #endregion
 
 
-#endregion
+    #endregion
 
-    public static bool CheckWideScreen() {
-        if (Screen.width * 1f / Screen.height > 1242f / 2208f) {
+    public static bool CheckWideScreen()
+    {
+        if (Screen.width * 1f / Screen.height > 1242f / 2208f)
+        {
             return true;
         }
         return false;
     }
 
-#region RATE
+    #region RATE
     public const string RATE = "rate";
-    public static void SetRate() {
+    public static void SetRate()
+    {
         PlayerPrefs.SetInt(RATE, 1);
         PlayerPrefs.Save();
     }
 
-    public static bool GetRate() {
+    public static bool GetRate()
+    {
         if (PlayerPrefs.GetInt(RATE, 0) == 1) return true;
         return false;
     }
-#endregion
+    #endregion
 
-#region REMOVE_AD
+    #region REMOVE_AD
     public const string REMOVE_AD = "remove_Ad";
     public static void SetRemoveAd()
     {
@@ -608,7 +657,8 @@ public class Config
         PlayerPrefs.Save();
     }
 
-    public static bool GetRemoveAd() {
+    public static bool GetRemoveAd()
+    {
         if (PlayerPrefs.GetInt(REMOVE_AD, 0) == 1) return true;
         return false;
     }
@@ -624,7 +674,7 @@ public class Config
     public static int countShowFreeItem = 0;
 
     public static int INTERVAL_SHOW_FREEITEM_POPUP = 3;
-    
+
     public static string FormatTime(int time)
     {
         int hour = time / 3600;
@@ -640,7 +690,7 @@ public class Config
 
     public static void SetDaily_FreeCoin()
     {
-        PlayerPrefs.SetInt(DAILY_FREECOIN,Config.GetCurrDayTime());
+        PlayerPrefs.SetInt(DAILY_FREECOIN, Config.GetCurrDayTime());
         PlayerPrefs.Save();
     }
 
@@ -657,14 +707,14 @@ public class Config
     #endregion
 
     #region DAILY_VIDEOCOIN
-    
+
     public const string DAILY_VIDEOCOIN = "daily_videocoin";
     public const string DAILY_VIDEOCOIN_COUNT = "daily_videocoin_count";
     public const int DAILY_VIDEOCOIN_MAX = 10;
 
     public static void SetDaily_VideoCoin()
     {
-        PlayerPrefs.SetInt(DAILY_VIDEOCOIN,Config.GetCurrDayTime());
+        PlayerPrefs.SetInt(DAILY_VIDEOCOIN, Config.GetCurrDayTime());
         PlayerPrefs.Save();
     }
 
@@ -672,12 +722,12 @@ public class Config
     {
         return PlayerPrefs.GetInt(DAILY_VIDEOCOIN, 0);
     }
-    
+
     public static bool CheckDaily_VideoCoin()
     {
         return Config.GetCurrDayTime() > GetDaily_VideoCoin();
     }
-    
+
     public static void SetDaily_VideoCoin_AddCount()
     {
         int currCount = GetDaily_VideoCoin_Count();
@@ -689,7 +739,7 @@ public class Config
 
     public static void SetDaily_VideoCoin_Count(int count)
     {
-        PlayerPrefs.SetInt(DAILY_VIDEOCOIN_COUNT,count);
+        PlayerPrefs.SetInt(DAILY_VIDEOCOIN_COUNT, count);
         PlayerPrefs.Save();
     }
 
@@ -697,26 +747,27 @@ public class Config
     {
         return PlayerPrefs.GetInt(DAILY_VIDEOCOIN_COUNT, DAILY_VIDEOCOIN_MAX);
     }
-    
-    
+
+
     #endregion
-    
-    
-    public static int GetCurrDayTime() {
+
+
+    public static int GetCurrDayTime()
+    {
         int currDayTime = DateTime.Now.DayOfYear + DateTime.Now.Year * 10000;
         return currDayTime;
     }
 
 
     public const int PRICE_COIN_REVIVE = 100;
-    
+
     #region DAILY_FREEREVIVE
 
     public const string DAILY_FREEREVIVE = "daily_freerevive";
 
     public static void SetDaily_FreeRevive()
     {
-        PlayerPrefs.SetInt(DAILY_FREEREVIVE,Config.GetCurrDayTime());
+        PlayerPrefs.SetInt(DAILY_FREEREVIVE, Config.GetCurrDayTime());
         PlayerPrefs.Save();
     }
 
@@ -732,8 +783,8 @@ public class Config
     }
 
     #endregion
-    
-    
+
+
     // #region DAILY_FREESPIN
     //
     // public const string DAILY_FREEREVIVE = "daily_freerevive";
@@ -756,7 +807,7 @@ public class Config
     // }
     //
     // #endregion
-    
-    
-    
+
+
+
 }

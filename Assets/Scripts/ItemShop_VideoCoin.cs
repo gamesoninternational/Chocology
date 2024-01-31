@@ -46,7 +46,7 @@ public class ItemShop_VideoCoin : MonoBehaviour
         lockGroup.SetActive(true);
         if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable())
         {
-            API.ShowRewardedVideo(CompleteMethod);
+            //API.ShowRewardedVideo(CompleteMethod);
             BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
 
         }

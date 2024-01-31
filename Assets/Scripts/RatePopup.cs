@@ -5,7 +5,7 @@ using DG.Tweening;
 public class RatePopup : MonoBehaviour
 {
     [Header("LINK RATE")]
-    private string rateLinkAndorid = "https://www.google.com/";
+    private string rateLinkAndorid = "https://play.google.com/store/apps/details?id=com.gameson.chocology";
     private string rateLinkIOS = "https://www.google.com/";
 
     public static RatePopup instance;

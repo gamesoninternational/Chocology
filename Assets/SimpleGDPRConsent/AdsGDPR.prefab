@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8144900000119015787}
   - component: {fileID: 6949423800427538391}
+  - component: {fileID: 2642814632809508778}
   m_Layer: 0
   m_Name: AdsGDPR
   m_TagString: Untagged
@@ -51,3 +52,18 @@ MonoBehaviour:
   TOS_Link: http://bsp.pw/tos.html
   Show_Privacy_Link: 1
   Privacy_Link: http://bsp.pw/privacy.html
+--- !u!114 &2642814632809508778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202129859335137433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b792c2080b24944a9e3f9fcb6f20ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bannerPosition: 1
+  removeads: 0
+  ForceRemoveAdsOnUpdate: 0

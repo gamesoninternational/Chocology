@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager instance;
     [Header("Canvas")]
     public CanvasScaler canvasScaler;
-    public BBUIButton btnSetting, btnGift, btnShop, btnSpin;
+    public BBUIButton btnSetting, btnGift, btnShop, btnSpin, btnLeaderboard;
     public BBUIButton btnPlay, btnParty;
     public BBUIButton btnLevel;
     public Text txtLevel;
@@ -36,7 +36,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // Debug.Log("Chay vao day dau tien ne");
+        // Debug.Log("Chay vao day dau tien ne");
 
 
         btnSetting.OnPointerClickCallBack_Completed.AddListener(TouchSetting);
@@ -55,25 +55,26 @@ public class MenuManager : MonoBehaviour
         //     startPackPopup.ShowStartPack();
         //     Config.isShowStarterPack = false;
         // }
-//        AdmobManager.instance.Request_Banner();
+        //        AdmobManager.instance.Request_Banner();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
-    public void TouchSetting() {
+    public void TouchSetting()
+    {
         OpenSettingPopup();
     }
 
     public void TouchGift()
     {
-      //  startPackPopup.ShowStartPack();
+        //  startPackPopup.ShowStartPack();
     }
-    
+
     public void SetBuyStarterPackSuccess()
     {
         btnRemoveAd.gameObject.SetActive(!Config.GetRemoveAd());
@@ -92,9 +93,10 @@ public class MenuManager : MonoBehaviour
         spinPopup.OpenSpinPopup();
     }
 
-    public void OpenShopCoin() {
+    public void OpenShopCoin()
+    {
         shopPopup.OpenPopup();
-        
+
     }
 
     public void CloseShopSucces()
@@ -102,19 +104,21 @@ public class MenuManager : MonoBehaviour
         Config.gameState = Config.GAME_STATE.PLAYING;
     }
 
-    public void TouchPlay() {
+    public void TouchPlay()
+    {
         //SceneManager.LoadScene("Play");
         HideView();
     }
     int countHack = 0;
-    public void TouchParty() {
-       
-            countHack++;
-            if (countHack == 10)
-            {
-                Config.isHackMode = true;
-            }
- 
+    public void TouchParty()
+    {
+
+        countHack++;
+        if (countHack == 10)
+        {
+            Config.isHackMode = true;
+        }
+
     }
 
     public void TouchLevel()
@@ -123,7 +127,8 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    public void InitViews() {
+    public void InitViews()
+    {
         lockGroup.gameObject.SetActive(false);
         btnSetting.gameObject.SetActive(false);
         //btnGift.gameObject.SetActive(false);
@@ -134,6 +139,7 @@ public class MenuManager : MonoBehaviour
         btnLevel.gameObject.SetActive(false);
         btnChest.gameObject.SetActive(false);
         btnSpin.gameObject.SetActive(false);
+        btnLeaderboard.gameObject.SetActive(false);
         btnRemoveAd.gameObject.SetActive(false);
         logo.gameObject.SetActive(false);
 
@@ -141,15 +147,16 @@ public class MenuManager : MonoBehaviour
 
         InitViews_ShowView();
 
-        if(Config.currLevel > 1)
+        if (Config.currLevel > 1)
         {
-           // startPackPopup.ShowStartPack();
+            // startPackPopup.ShowStartPack();
         }
 
     }
 
-    public void InitViews_ShowView() {
-        
+    public void InitViews_ShowView()
+    {
+
         Sequence sequenceShowView = DOTween.Sequence();
         sequenceShowView.InsertCallback(0.1f, () =>
         {
@@ -159,7 +166,7 @@ public class MenuManager : MonoBehaviour
 
             coinGroup.gameObject.SetActive(true);
             coinGroup.GetComponent<BBUIView>().ShowView();
-           
+
         });
 
         sequenceShowView.InsertCallback(0.3f, () =>
@@ -172,8 +179,11 @@ public class MenuManager : MonoBehaviour
 
             btnSpin.gameObject.SetActive(true);
             btnSpin.GetComponent<BBUIView>().ShowView();
+
+            btnLeaderboard.gameObject.SetActive(true);
+            btnLeaderboard.GetComponent<BBUIView>().ShowView();
         });
-        
+
         sequenceShowView.InsertCallback(1f, () =>
         {
             btnChest.GetComponent<StarChestButton>().SetAnimation();
@@ -186,11 +196,11 @@ public class MenuManager : MonoBehaviour
                 //btnGift.gameObject.SetActive(true);
                 //btnGift.GetComponent<BBUIView>().ShowView();
             }
-           
+
 
             if (!Config.GetRemoveAd())
             {
-               // btnRemoveAd.gameObject.SetActive(true);
+                // btnRemoveAd.gameObject.SetActive(true);
                 btnRemoveAd.GetComponent<BBUIView>().ShowView();
             }
         });
@@ -236,7 +246,8 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    public void HideView() {
+    public void HideView()
+    {
         SoundManager.instance.PlaySound_HideView();
         lockGroup.gameObject.SetActive(true);
         //Sequence sequenceShowView = DOTween.Sequence();
@@ -272,7 +283,8 @@ public class MenuManager : MonoBehaviour
     [Header("SETTING")]
     public SettingPopup settingPopup;
 
-    public void OpenSettingPopup() {
+    public void OpenSettingPopup()
+    {
         settingPopup.OpenSettingPopup();
     }
 
@@ -283,23 +295,25 @@ public class MenuManager : MonoBehaviour
         ratePopup.OpenRatePopup();
     }
 
-    
-    
-    
-    
+
+
+
+
 
     #region LEVELS
     [Header("LEVELS")]
     public LevelPopup levelPopup;
 
 
-    public void OpenPopupLevel() {
+    public void OpenPopupLevel()
+    {
         Debug.Log("OpenPopupLevel");
         levelPopup.ShowLevelPopup();
     }
 
 
-    public void SelectLevel(int _levelSelect) {
+    public void SelectLevel(int _levelSelect)
+    {
         Config.isSelectLevel = true;
         Config.currSelectLevel = _levelSelect;
 
@@ -328,12 +342,14 @@ public class MenuManager : MonoBehaviour
     #region CHESTPOPUP
     [Header("CHEST POPUP")]
     public ChestPopup chestPopup;
-    public void OpenChestPopup(bool isFullStar) {
+    public void OpenChestPopup(bool isFullStar)
+    {
         chestPopup.OpenChestPopup(isFullStar);
     }
 
-    public void CloseChestPopup() {
-        
+    public void CloseChestPopup()
+    {
+
     }
 
     #endregion
@@ -343,5 +359,5 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
+
 }
