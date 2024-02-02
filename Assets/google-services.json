@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "584099846573",
+    "project_id": "chocology-412115",
+    "storage_bucket": "chocology-412115.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584099846573:android:8c681acb5baf4c8208a924",
+        "android_client_info": {
+          "package_name": "com.gameson.chocology"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584099846573-tv0rov8uu6p28hs0iuqn3bpe5jf67870.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gameson.chocology",
+            "certificate_hash": "289987caf44a0afadb6ebc3a1b864008feabc722"
+          }
+        },
+        {
+          "client_id": "584099846573-mrobhqagltg8thuj1hggbges4nhff6e0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTL1knb2RU-qkT3dW6Yb9I-vHbQ0lpV6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584099846573-mrobhqagltg8thuj1hggbges4nhff6e0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
