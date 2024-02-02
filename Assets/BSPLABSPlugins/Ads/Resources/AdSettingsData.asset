@@ -175,7 +175,7 @@ MonoBehaviour:
     - platform: 0
       enabled: 1
       appId:
-        id: ca-app-pub-3949237800163961~7081373850
+        id: ca-app-pub-3949237800163961~3202708795
         displayName: App ID
         notRequired: 0
       idBanner:
@@ -637,4 +637,4 @@ MonoBehaviour:
   bannerMediation: 1
   interstitialMediation: 1
   rewardedMediation: 1
-  externalFileUrl: http://gameson.r3ste.mobi/AdOrder.txt
+  externalFileUrl: https://gameson.r3ste.mobi/Chocology_AdOrder.txt

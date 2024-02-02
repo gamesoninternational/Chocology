@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Games On International
+  companyName: GamesON
   productName: Chocology
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -837,7 +837,7 @@ PlayerSettings:
     WebGL: dUI_MANAGER
     Windows Store Apps: dUI_MANAGER
     XboxOne: dUI_MANAGER
-    iPhone: dUI_MANAGER;ODIN_INSPECTOR
+    iPhone: dUI_MANAGER;ODIN_INSPECTOR;USE_ADMOB_BSPLABS;USE_UNITYADS_BSPLABS;USE_APPLOVIN_BSPLABS;USE_IRONSOURCE_BSPLABS;USE_ADMOB_BSPLABS_PATCH
     tvOS: dUI_MANAGER
   additionalCompilerArguments: {}
   platformArchitecture: {}

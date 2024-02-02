@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -366,10 +366,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2054971392}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 3202.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620644586
 MonoBehaviour:
@@ -391,9 +391,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9e4e3379ead554de582d12171f1be62f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78ef831c8e96901408306fd8c381260d, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -544,6 +544,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114179903453641630, guid: a3267720e82aa41c1a05ab29824902b4,
+        type: 3}
+      propertyPath: appToken
+      value: 523riovnr3pc
+      objectReference: {fileID: 0}
+    - target: {fileID: 114179903453641630, guid: a3267720e82aa41c1a05ab29824902b4,
+        type: 3}
+      propertyPath: logLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114179903453641630, guid: a3267720e82aa41c1a05ab29824902b4,
+        type: 3}
+      propertyPath: environment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114179903453641630, guid: a3267720e82aa41c1a05ab29824902b4,
+        type: 3}
+      propertyPath: startManually
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -561,6 +581,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AdsGDPR
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949423800427538391, guid: 3ca2274e52aa95b45b8c37edb6843879,
+        type: 3}
+      propertyPath: Show_TOS_Link
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949423800427538391, guid: 3ca2274e52aa95b45b8c37edb6843879,
+        type: 3}
+      propertyPath: Show_Privacy_Link
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949423800427538391, guid: 3ca2274e52aa95b45b8c37edb6843879,
+        type: 3}
+      propertyPath: Url_AdServer_Json
+      value: https://gameson.r3ste.mobi/Chocology_GameData.json
       objectReference: {fileID: 0}
     - target: {fileID: 8144900000119015787, guid: 3ca2274e52aa95b45b8c37edb6843879,
         type: 3}
@@ -992,7 +1027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 419}
+  m_AnchoredPosition: {x: 0, y: 745}
   m_SizeDelta: {x: 630, y: 333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748402781
@@ -1015,7 +1050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85c8db81f77054474b72224fc986f71d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d764a1cf1a139ce4db76e8c6cf6cebb3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1067,7 +1102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -246}
+  m_AnchoredPosition: {x: 0, y: -568}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759760941
@@ -1091,7 +1126,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 10e0f91a6f8fe423ca51e964a9c50eef, type: 3}
+    m_Font: {fileID: 12800000, guid: 8c5c885e55c1df94789c5ec885fe0c13, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -1103,7 +1138,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Loading...
+  m_Text: LOADING...
 --- !u!222 &1759760942
 CanvasRenderer:
   m_ObjectHideFlags: 0

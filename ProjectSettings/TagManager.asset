@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 325323929
+    locked: 0
   - name: Floor1
     uniqueID: 231848659
     locked: 0
