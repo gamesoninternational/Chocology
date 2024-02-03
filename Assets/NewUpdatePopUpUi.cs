@@ -28,9 +28,10 @@ public class NewUpdatePopUpUi : MonoBehaviour
 
     [Space(29f)]
     [Header("## Settings :")]
-    [SerializeField]
-    [TextArea(2, 5)]
-    private string jsonDataUrl;
+    [SerializeField, TextArea(2, 5)]
+    private string androidJsonDataURL;
+    [SerializeField, TextArea(2, 5)]
+    private string iosJsonDataURL;
 
     static bool isAlreadyCheckedForUpdates = false;
 
@@ -49,7 +50,12 @@ public class NewUpdatePopUpUi : MonoBehaviour
 
     IEnumerator CheckforUpdate()
     {
-        UnityWebRequest request = UnityWebRequest.Get(jsonDataUrl);
+        UnityWebRequest request;
+#if UNITY_EDITOR || UNITY_ANDROID
+        request = UnityWebRequest.Get(androidJsonDataURL);
+#elif UNITY_IOS
+        request = UnityWebRequest.Get(iosJsonDataURL);
+#endif
         request.chunkedTransfer = false;
         request.disposeDownloadHandlerOnDispose = true;
         request.timeout = 60;

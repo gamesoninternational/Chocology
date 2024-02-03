@@ -135,7 +135,7 @@ public class ChestPopup : MonoBehaviour
     {
         lockGroup.gameObject.SetActive(true);
 
-        API.ShowRewardedVideo(CompleteMethod);
+        //API.ShowRewardedVideo(CompleteMethod);
         BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
 
     }

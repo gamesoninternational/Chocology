@@ -294,8 +294,8 @@ public class Config
     public const string PIGGYBANK = "piggyBank";
     public static int currPiggyBankCoin = 0;
     public static int ADD_PIGGYBANK_COIN = 5;
-    public static int PIGGYBANK_COIN_MAX = 2000;
-    public static int PIGGYBANK_COIN_MIN = 1000;
+    public static int PIGGYBANK_COIN_MAX = 100;
+    public static int PIGGYBANK_COIN_MIN = 0;
     public static int PIGGYBANK_COIN_xVALUE = 1;
     public static event Action OnChange_PiggyBank_Coin = delegate () { };
     public static void AddPiggyBank_Coin()

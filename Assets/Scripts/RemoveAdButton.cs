@@ -55,12 +55,14 @@ public class RemoveAdButton : MonoBehaviour
 
                     Init_Button();
                 }
+                GlobalVar.CallAnalytics($"removeadd_success");
             }
             else
             {
                 Debug.Log("Buy Fail!Buy Fail!Buy Fail!Buy Fail!Buy Fail!");
                 lockGroup.gameObject.SetActive(false);
                 NotificationPopup.instance.AddNotification("Buy Fail!");
+                GlobalVar.CallAnalytics($"removeadd_failed");
             }
         });
     }

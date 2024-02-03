@@ -21,6 +21,7 @@ public class PiggyBankPopup : MonoBehaviour
     public Text txtMaxBankCoin;
     public Text txtCurrBankCoin;
     public Text txtPrice;
+    public Text txtContent;
     public Image imgBankCoinProgress;
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class PiggyBankPopup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OpenPiggyBank()
@@ -60,20 +61,39 @@ public class PiggyBankPopup : MonoBehaviour
         //WatchAds
         //BuyPiggyBankCoin_Success();
         lockGroup.gameObject.SetActive(true);
+
+        BsplabsMobileAds.BspLabsAdsMobile.Instance.ShowRewardedVideo((x) =>
+        {
+            lockGroup.gameObject.SetActive(false);
+            if (x)
+            {
+                BuyPiggyBankCoin_Success();
+                GlobalVar.CallAnalytics("open_piggybank");
+            }
+            else
+            {
+                NotificationPopup.instance.AddNotification("Failed to claim piggy bank");
+            }
+        });
+
+        ///Piggy bank using IAP
+        /* 
         PurchaserManager.instance.BuyConsumable(Config.IAP_ID.piggy_bank, (string _iapID, PurchaserManager.IAP_CALLBACK_STATE _state) =>
         {
             if (_state == PurchaserManager.IAP_CALLBACK_STATE.SUCCESS)
             {
                 lockGroup.gameObject.SetActive(false);
-                if (_iapID.Equals(Config.IAP_ID.piggy_bank.ToString())) {
+                if (_iapID.Equals(Config.IAP_ID.piggy_bank.ToString()))
+                {
                     BuyPiggyBankCoin_Success();
                 }
             }
-            else {
+            else
+            {
                 lockGroup.gameObject.SetActive(false);
                 NotificationPopup.instance.AddNotification("Buy Fail!");
             }
-        });
+        });*/
     }
 
 
@@ -84,7 +104,7 @@ public class PiggyBankPopup : MonoBehaviour
         configItemShopData.countItem = Config.currPiggyBankCoin * Config.PIGGYBANK_COIN_xVALUE;
         configItemShopData.shopItemType = Config.SHOPITEM.COIN;
         configItemShopData.price = 0;
-        GamePlayManager.instance.OpenRewardPopup(new List<ConfigItemShopData>() { configItemShopData },false);
+        GamePlayManager.instance.OpenRewardPopup(new List<ConfigItemShopData>() { configItemShopData }, false);
 
         Config.SetPiggyBank(0);
         gameObject.SetActive(false);
@@ -98,15 +118,17 @@ public class PiggyBankPopup : MonoBehaviour
         popup.gameObject.SetActive(false);
         btnBuy.gameObject.SetActive(false);
         //txtPrice.text = PurchaserManager.instance.GetLocalizedPriceString(Config.IAP_ID.piggy_bank.ToString());
-        InitIAP();
+        //InitIAP();
         //Debug.Log("Chay vao day + txtPrice " + txtPrice.text);
-        if (Config.currPiggyBankCoin >= Config.PIGGYBANK_COIN_MIN)
+        if (Config.currPiggyBankCoin > Config.PIGGYBANK_COIN_MIN)
         {
             btnBuy.Interactable = true;
         }
-        else {
+        else
+        {
             btnBuy.Interactable = false;
         }
+        txtContent.text = $"Your coin <color=#ffff00ff>{Config.currPiggyBankCoin}</color> in Piggy Bank.\nBreak this Piggy Bank and take your coins, to buy whatever you want";
         btnClose.gameObject.SetActive(false);
         txtMaxBankCoin.text = $"{Config.PIGGYBANK_COIN_MAX}";
         txtMinBankCoin.text = $"{Config.PIGGYBANK_COIN_MIN}";
@@ -116,19 +138,19 @@ public class PiggyBankPopup : MonoBehaviour
         InitView_ShowView();
     }
 
-    public void InitIAP()
-    {
-        if (PurchaserManager.instance.IsInitialized())
-        {
-            txtPrice.text = PurchaserManager.instance.GetLocalizedPriceString(Config.IAP_ID.piggy_bank.ToString());
-            btnBuy.Interactable = true;
-        }
-        else
-        {
-            txtPrice.text = "0.01$";
-            btnBuy.Interactable = false;
-        }
-    }
+    //public void InitIAP()
+    //{
+    //    if (PurchaserManager.instance.IsInitialized())
+    //    {
+    //        txtPrice.text = PurchaserManager.instance.GetLocalizedPriceString(Config.IAP_ID.piggy_bank.ToString());
+    //        btnBuy.Interactable = true;
+    //    }
+    //    else
+    //    {
+    //        txtPrice.text = "0.01$";
+    //        btnBuy.Interactable = false;
+    //    }
+    //}
 
     public void InitView_ShowView()
     {
@@ -136,11 +158,11 @@ public class PiggyBankPopup : MonoBehaviour
         Sequence sequenceShowView = DOTween.Sequence();
         sequenceShowView.InsertCallback(0.1f, () =>
         {
-          //  Debug.LogError("Chay vao day + InitView_ShowView popup ");
+            //  Debug.LogError("Chay vao day + InitView_ShowView popup ");
             popup.gameObject.SetActive(true);
             popup.GetComponent<BBUIView>().ShowView();
         });
-        
+
         sequenceShowView.InsertCallback(0.4f, () =>
         {
             //Debug.LogError("Chay vao day + InitView_ShowView btnBuy ");

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7923,7 +7923,8 @@ MonoBehaviour:
   notNowBtn: {fileID: 1687828626}
   updateBtn: {fileID: 551639853}
   uiDescription: {fileID: 2066785139}
-  jsonDataUrl: https://gameson.r3ste.mobi/Chocology_GameVersion_Android.json
+  androidJsonDataURL: https://gameson.r3ste.mobi/Chocology_GameVersion_Android.json
+  iosJsonDataURL: https://gameson.r3ste.mobi/Chocology_GameVersion_iOS.json
 --- !u!4 &472897236
 Transform:
   m_ObjectHideFlags: 0
@@ -9423,7 +9424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &797604427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9441,7 +9442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 287, y: 207}
+  m_AnchoredPosition: {x: 250, y: -150}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797604428
@@ -30331,7 +30332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 138.99998, y: -150}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510000230
@@ -40030,7 +40031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -131, y: -150}
+  m_AnchoredPosition: {x: -250, y: -150}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789555684
@@ -43590,7 +43591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1947217704
 RectTransform:
   m_ObjectHideFlags: 0
