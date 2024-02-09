@@ -6,6 +6,7 @@
  * Support : dotmobstudio@gmail.com
  */
 using DG.Tweening;
+using Mkey;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class LevelPopup : MonoBehaviour
     public GameObject popup;
     public GameObject lockGroup;
     public Text txtCounStar;
+    public Mkey.MapMaker mapMaker;
 
     //public ScrollRect scrollRect;
     //public Transform content;
@@ -108,7 +110,7 @@ public class LevelPopup : MonoBehaviour
 
 
     public void InitLevels() {
-        
+
         //for (int i = 0; i < Config.MAX_LEVEL; i++) {
         //    ItemLevel itemLevel = Instantiate(itemLevelPrefab, content);
 
@@ -121,6 +123,56 @@ public class LevelPopup : MonoBehaviour
         //}
 
         //scrollRect.verticalNormalizedPosition = 1f;
+        int total_level_per_Map = Config.MAX_LEVEL / mapMaker.biomes.Count;
+        int currentMap = 0;
+        Config.GetCurrLevel();
+
+        for (int map = mapMaker.biomes.Count - 1; map >= 0; map--)
+        {
+            
+            int indexMap = map;
+            int startLevel = (currentMap) * total_level_per_Map + 1;
+            int endLevel = (currentMap + 1) * total_level_per_Map;
+
+            mapMaker.biomes[indexMap].count = total_level_per_Map;
+            mapMaker.biomes[indexMap].Create();
+            mapMaker.biomes[indexMap].SetButtonsPositionOnCurve();
+
+
+            for (int level = startLevel; level <= endLevel && level <= Config.MAX_LEVEL;)
+            {
+
+                for(int level_button = 0; level_button < mapMaker.biomes[indexMap].levelButtons.Count; level_button++)
+                {
+                    int currentLevel = level;
+                    mapMaker.biomes[indexMap].levelButtons[level_button].button.onClick.AddListener(() => MenuManager.instance.SelectLevel(currentLevel));
+                    mapMaker.biomes[indexMap].levelButtons[level_button].numberText.text = currentLevel.ToString();
+                    if (Config.LevelStar(currentLevel) > 0)
+                    {
+                        mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(false, Config.LevelStar(currentLevel), true);
+                    }
+                    else
+                    {
+                        
+                        if(currentLevel == Config.currLevel)
+                        {
+                            mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(true, Config.LevelStar(currentLevel), false);
+                        }
+                        else
+                        {
+                            mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(false, Config.LevelStar(currentLevel), false);
+                        }
+
+                    }
+                    
+                    level++;  
+                }
+            }
+
+            currentMap++;
+        }
+
+        MapController.Instance.SetActiveButton();
     }
 
     public void InitView_ShowView()

@@ -24,6 +24,7 @@ public class MenuManager : MonoBehaviour
     public BBUIButton btnRemoveAd, btnChest;
     public Image logo;
     public GameObject lockGroup;
+    public Mkey.MapMaker mapMaker;
     private void Awake()
     {
         instance = this;
@@ -316,7 +317,7 @@ public class MenuManager : MonoBehaviour
     {
         Config.isSelectLevel = true;
         Config.currSelectLevel = _levelSelect;
-
+        Debug.Log(_levelSelect);
         HideView();
     }
     #endregion
