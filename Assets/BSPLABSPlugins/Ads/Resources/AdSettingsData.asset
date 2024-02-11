@@ -13,84 +13,6 @@ MonoBehaviour:
   m_Name: AdSettingsData
   m_EditorClassIdentifier: 
   mediationSettings:
-  - advertiser: 9
-    advertiserName: IronSource
-    bannerSettings:
-      adType: 1
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 66
-      weightiOS: 66
-      weightWindows: 66
-    interstitialSettings:
-      adType: 2
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 73
-      weightiOS: 73
-      weightWindows: 73
-    rewardedSettings:
-      adType: 3
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 55
-      weightiOS: 55
-      weightWindows: 55
-  - advertiser: 4
-    advertiserName: Unity
-    bannerSettings:
-      adType: 1
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 66
-      weightiOS: 66
-      weightWindows: 66
-    interstitialSettings:
-      adType: 2
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 73
-      weightiOS: 73
-      weightWindows: 73
-    rewardedSettings:
-      adType: 3
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 54
-      weightiOS: 54
-      weightWindows: 54
-  - advertiser: 6
-    advertiserName: AppLovin
-    bannerSettings:
-      adType: 1
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 66
-      weightiOS: 66
-      weightWindows: 66
-    interstitialSettings:
-      adType: 2
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 73
-      weightiOS: 73
-      weightWindows: 73
-    rewardedSettings:
-      adType: 3
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 55
-      weightiOS: 55
-      weightWindows: 55
   - advertiser: 0
     advertiserName: Admob
     bannerSettings:
@@ -98,22 +20,100 @@ MonoBehaviour:
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
+      weightAndroid: 100
+      weightiOS: 100
+      weightWindows: 100
     interstitialSettings:
       adType: 2
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
+      weightAndroid: 100
+      weightiOS: 100
+      weightWindows: 100
     rewardedSettings:
       adType: 3
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
+      weightAndroid: 100
+      weightiOS: 100
+      weightWindows: 100
+  - advertiser: 9
+    advertiserName: IronSource
+    bannerSettings:
+      adType: 1
+      orderAndroid: 4
+      orderiOS: 4
+      orderWindows: 4
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
+    interstitialSettings:
+      adType: 2
+      orderAndroid: 4
+      orderiOS: 4
+      orderWindows: 4
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
+    rewardedSettings:
+      adType: 3
+      orderAndroid: 4
+      orderiOS: 4
+      orderWindows: 4
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
+  - advertiser: 4
+    advertiserName: Unity
+    bannerSettings:
+      adType: 1
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
+    interstitialSettings:
+      adType: 2
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
+    rewardedSettings:
+      adType: 3
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
+  - advertiser: 6
+    advertiserName: AppLovin
+    bannerSettings:
+      adType: 1
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
+    interstitialSettings:
+      adType: 2
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
+    rewardedSettings:
+      adType: 3
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
       weightAndroid: 0
       weightiOS: 0
       weightWindows: 0

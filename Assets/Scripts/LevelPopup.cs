@@ -20,7 +20,7 @@ public class LevelPopup : MonoBehaviour
     public GameObject lockGroup;
     public Text txtCounStar;
     public Mkey.MapMaker mapMaker;
-
+    public bool DoneCreateMap { get; set; }
     //public ScrollRect scrollRect;
     //public Transform content;
     //public ItemLevel itemLevelPrefab;
@@ -29,7 +29,8 @@ public class LevelPopup : MonoBehaviour
         instance = this;
     }
 
-    enum LEVELPOPUP_ACTION_TYPE {
+    enum LEVELPOPUP_ACTION_TYPE
+    {
         SelectLevel,
         Close
     }
@@ -69,7 +70,8 @@ public class LevelPopup : MonoBehaviour
     }
 
     private InfoLevel infoLevelSelect;
-    public void SelectLevel(InfoLevel infoLevel) {
+    public void SelectLevel(InfoLevel infoLevel)
+    {
         infoLevelSelect = infoLevel;
         typeAction = LEVELPOPUP_ACTION_TYPE.SelectLevel;
         lockGroup.gameObject.SetActive(true);
@@ -78,14 +80,15 @@ public class LevelPopup : MonoBehaviour
 
     public void HidePopup_Finished()
     {
-        if (typeAction == LEVELPOPUP_ACTION_TYPE.SelectLevel) {
+        if (typeAction == LEVELPOPUP_ACTION_TYPE.SelectLevel)
+        {
             Config.isSelectLevel = true;
             Config.currSelectLevel = infoLevelSelect.level;
-          
+
             {
                 SceneManager.LoadScene("Play");
             }
-           
+
         }
         gameObject.SetActive(false);
     }
@@ -105,11 +108,12 @@ public class LevelPopup : MonoBehaviour
         //}
 
         InitView_ShowView();
-       
+
     }
 
 
-    public void InitLevels() {
+    public void InitLevels()
+    {
 
         //for (int i = 0; i < Config.MAX_LEVEL; i++) {
         //    ItemLevel itemLevel = Instantiate(itemLevelPrefab, content);
@@ -127,49 +131,53 @@ public class LevelPopup : MonoBehaviour
         int currentMap = 0;
         Config.GetCurrLevel();
 
-        for (int map = mapMaker.biomes.Count - 1; map >= 0; map--)
+        if (!DoneCreateMap)
         {
-            
-            int indexMap = map;
-            int startLevel = (currentMap) * total_level_per_Map + 1;
-            int endLevel = (currentMap + 1) * total_level_per_Map;
-
-            mapMaker.biomes[indexMap].count = total_level_per_Map;
-            mapMaker.biomes[indexMap].Create();
-            mapMaker.biomes[indexMap].SetButtonsPositionOnCurve();
-
-
-            for (int level = startLevel; level <= endLevel && level <= Config.MAX_LEVEL;)
+            DoneCreateMap = true;
+            for (int map = mapMaker.biomes.Count - 1; map >= 0; map--)
             {
 
-                for(int level_button = 0; level_button < mapMaker.biomes[indexMap].levelButtons.Count; level_button++)
+                int indexMap = map;
+                int startLevel = (currentMap) * total_level_per_Map + 1;
+                int endLevel = (currentMap + 1) * total_level_per_Map;
+
+                mapMaker.biomes[indexMap].count = total_level_per_Map;
+                mapMaker.biomes[indexMap].Create();
+                mapMaker.biomes[indexMap].SetButtonsPositionOnCurve();
+
+
+                for (int level = startLevel; level <= endLevel && level <= Config.MAX_LEVEL;)
                 {
-                    int currentLevel = level;
-                    mapMaker.biomes[indexMap].levelButtons[level_button].button.onClick.AddListener(() => MenuManager.instance.SelectLevel(currentLevel));
-                    mapMaker.biomes[indexMap].levelButtons[level_button].numberText.text = currentLevel.ToString();
-                    if (Config.LevelStar(currentLevel) > 0)
+
+                    for (int level_button = 0; level_button < mapMaker.biomes[indexMap].levelButtons.Count; level_button++)
                     {
-                        mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(false, Config.LevelStar(currentLevel), true);
-                    }
-                    else
-                    {
-                        
-                        if(currentLevel == Config.currLevel)
+                        int currentLevel = level;
+                        mapMaker.biomes[indexMap].levelButtons[level_button].button.onClick.AddListener(() => MenuManager.instance.SelectLevel(currentLevel));
+                        mapMaker.biomes[indexMap].levelButtons[level_button].numberText.text = currentLevel.ToString();
+                        if (Config.LevelStar(currentLevel) > 0)
                         {
-                            mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(true, Config.LevelStar(currentLevel), false);
+                            mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(false, Config.LevelStar(currentLevel), true);
                         }
                         else
                         {
-                            mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(false, Config.LevelStar(currentLevel), false);
+
+                            if (currentLevel == Config.currLevel)
+                            {
+                                mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(true, Config.LevelStar(currentLevel), false);
+                            }
+                            else
+                            {
+                                mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(false, Config.LevelStar(currentLevel), false);
+                            }
+
                         }
 
+                        level++;
                     }
-                    
-                    level++;  
                 }
-            }
 
-            currentMap++;
+                currentMap++;
+            }
         }
 
         MapController.Instance.SetActiveButton();
@@ -183,7 +191,7 @@ public class LevelPopup : MonoBehaviour
             popup.gameObject.SetActive(true);
             popup.GetComponent<BBUIView>().ShowView();
 
-            
+
         });
         sequenceShowView.InsertCallback(0.4f, () =>
         {
@@ -193,6 +201,6 @@ public class LevelPopup : MonoBehaviour
             InitLevels();
         });
 
-        
+
     }
 }

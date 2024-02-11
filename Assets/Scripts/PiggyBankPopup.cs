@@ -36,11 +36,10 @@ public class PiggyBankPopup : MonoBehaviour
         popup.GetComponent<BBUIView>().HideBehavior.onCallback_Completed.AddListener(HidePopup_Finished);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void TouchPiggyBank() => OpenPiggyBankPopup();
+    public void OpenPiggyBankPopup() => this.OpenPiggyBank();
 
-    }
+
 
     public void OpenPiggyBank()
     {
@@ -104,10 +103,16 @@ public class PiggyBankPopup : MonoBehaviour
         configItemShopData.countItem = Config.currPiggyBankCoin * Config.PIGGYBANK_COIN_xVALUE;
         configItemShopData.shopItemType = Config.SHOPITEM.COIN;
         configItemShopData.price = 0;
-        GamePlayManager.instance.OpenRewardPopup(new List<ConfigItemShopData>() { configItemShopData }, false);
+        if (GamePlayManager.instance != null)
+            GamePlayManager.instance.OpenRewardPopup(new List<ConfigItemShopData>() { configItemShopData }, false);
+        else
+            rewardPopup.OpenRewardPopup(new List<ConfigItemShopData>() { configItemShopData }, false);
 
         Config.SetPiggyBank(0);
         gameObject.SetActive(false);
+
+        //if (menu_CoinGroup != null)
+        //    menu_CoinGroup.ShowCoin();
     }
 
 
@@ -178,8 +183,15 @@ public class PiggyBankPopup : MonoBehaviour
 
     public void HidePopup_Finished()
     {
-        //Debug.LogError("Chay vao day + HidePopup_Finished  ");
-        GamePlayManager.instance.CloseShopSucces();
+        if (GamePlayManager.instance != null)
+            GamePlayManager.instance.CloseShopSucces();
+
         gameObject.SetActive(false);
     }
+
+    #region REWARDPOPUP
+    [Header("REWARD POPUP")]
+    public RewardPopup rewardPopup;
+    public Menu_CoinGroup menu_CoinGroup;
+    #endregion
 }
