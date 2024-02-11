@@ -1,6 +1,5 @@
 <dependencies>
   <packages>
-    <package>com.applovin.mediation:google-adapter:[22.6.0.0]</package>
     <package>com.applovin:applovin-sdk:12.1.0</package>
     <package>com.google.android.gms:play-services-ads:22.6.0</package>
     <package>com.google.android.gms:play-services-ads-identifier:18.0.1</package>
@@ -61,7 +60,6 @@
     <file>Assets/Plugins/Android/androidx.viewpager.viewpager-1.0.0.aar</file>
     <file>Assets/Plugins/Android/androidx.work.work-runtime-2.7.0.aar</file>
     <file>Assets/Plugins/Android/com.applovin.applovin-sdk-12.1.0.aar</file>
-    <file>Assets/Plugins/Android/com.applovin.mediation.google-adapter-22.6.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.datatransport.transport-api-3.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.datatransport.transport-backend-cct-3.1.8.aar</file>
     <file>Assets/Plugins/Android/com.google.android.datatransport.transport-runtime-3.1.8.aar</file>
