@@ -20,77 +20,25 @@ MonoBehaviour:
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 100
-      weightiOS: 100
-      weightWindows: 100
+      weightAndroid: 80
+      weightiOS: 80
+      weightWindows: 80
     interstitialSettings:
       adType: 2
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 100
-      weightiOS: 100
-      weightWindows: 100
+      weightAndroid: 80
+      weightiOS: 80
+      weightWindows: 80
     rewardedSettings:
       adType: 3
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 100
-      weightiOS: 100
-      weightWindows: 100
-  - advertiser: 9
-    advertiserName: IronSource
-    bannerSettings:
-      adType: 1
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
-    interstitialSettings:
-      adType: 2
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
-    rewardedSettings:
-      adType: 3
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
-  - advertiser: 4
-    advertiserName: Unity
-    bannerSettings:
-      adType: 1
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
-    interstitialSettings:
-      adType: 2
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
-    rewardedSettings:
-      adType: 3
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
+      weightAndroid: 80
+      weightiOS: 80
+      weightWindows: 80
   - advertiser: 6
     advertiserName: AppLovin
     bannerSettings:
@@ -98,25 +46,77 @@ MonoBehaviour:
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
     interstitialSettings:
       adType: 2
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
     rewardedSettings:
       adType: 3
       orderAndroid: 0
       orderiOS: 0
       orderWindows: 0
-      weightAndroid: 0
-      weightiOS: 0
-      weightWindows: 0
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
+  - advertiser: 4
+    advertiserName: Unity
+    bannerSettings:
+      adType: 1
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
+    interstitialSettings:
+      adType: 2
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
+    rewardedSettings:
+      adType: 3
+      orderAndroid: 0
+      orderiOS: 0
+      orderWindows: 0
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
+  - advertiser: 9
+    advertiserName: IronSource
+    bannerSettings:
+      adType: 1
+      orderAndroid: 4
+      orderiOS: 4
+      orderWindows: 4
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
+    interstitialSettings:
+      adType: 2
+      orderAndroid: 4
+      orderiOS: 4
+      orderWindows: 4
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
+    rewardedSettings:
+      adType: 3
+      orderAndroid: 4
+      orderiOS: 4
+      orderWindows: 4
+      weightAndroid: 20
+      weightiOS: 20
+      weightWindows: 20
   advertiserSettings:
   - advertiser: 2
     useSDK: 0
@@ -175,19 +175,19 @@ MonoBehaviour:
     - platform: 0
       enabled: 1
       appId:
-        id: ca-app-pub-3949237800163961~3202708795
+        id: ca-app-pub-7429323060936387~7903475903
         displayName: App ID
         notRequired: 0
       idBanner:
-        id: ca-app-pub-3940256099942544/6300978111
+        id: ca-app-pub-7429323060936387/2863482774
         displayName: Banner ID
         notRequired: 0
       idInterstitial:
-        id: ca-app-pub-3940256099942544/1033173712
+        id: ca-app-pub-7429323060936387/9228159691
         displayName: Interstitial ID
         notRequired: 0
       idRewarded:
-        id: ca-app-pub-3940256099942544/5224354917
+        id: ca-app-pub-7429323060936387/6601996358
         displayName: Rewarded Video ID
         notRequired: 0
       hasBanner: 1
@@ -446,15 +446,15 @@ MonoBehaviour:
         displayName: SDK key
         notRequired: 0
       idBanner:
-        id: e91710f297752b47
+        id: 16cb916cbda34524
         displayName: Banner ID
         notRequired: 0
       idInterstitial:
-        id: 11aea57d31e89f03
+        id: 8a6490714c6f4dfa
         displayName: Interstitial ID
         notRequired: 0
       idRewarded:
-        id: f2eeee8996c904a9
+        id: 20cb4ed2e2c57c2c
         displayName: Rewarded Video ID
         notRequired: 0
       hasBanner: 1
