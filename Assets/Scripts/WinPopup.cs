@@ -73,7 +73,7 @@ public class WinPopup : MonoBehaviour
             {
                 lockGroup.gameObject.SetActive(false);
                 NotificationPopup.instance.AddNotification("Buy Fail!");
-                GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_failed");
+                GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_cancel");
             }
         });
     }

@@ -36,9 +36,9 @@ MonoBehaviour:
       orderAndroid: 1
       orderiOS: 1
       orderWindows: 1
-      weightAndroid: 80
-      weightiOS: 80
-      weightWindows: 80
+      weightAndroid: 0
+      weightiOS: 0
+      weightWindows: 0
   - advertiser: 6
     advertiserName: AppLovin
     bannerSettings:

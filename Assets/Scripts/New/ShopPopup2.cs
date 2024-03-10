@@ -194,7 +194,7 @@ public class ShopPopup2 : MonoBehaviour
                 Debug.Log("Buy Fail!Buy Fail!Buy Fail!Buy Fail!Buy Fail!");
                 lockGroup.gameObject.SetActive(false);
                 NotificationPopup.instance.AddNotification("Buy Fail!");
-                GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_failed");
+                GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_cancel");
             }
         });
 
