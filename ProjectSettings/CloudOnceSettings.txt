@@ -3,12 +3,12 @@
 	"LeaderboardIDs":[
 		{
 			"InternalID":"ChocologyLeaderboard",
-			"AppleID":"",
+			"AppleID":"com.gameson.chocologyleaderboard",
 			"GoogleID":"CgkIrbPB-P8QEAIQAg"
 		}
 	],
 	"CloudVariables":[],
-	"AppleSupported":false,
+	"AppleSupported":true,
 	"GoogleSupported":true,
 	"GoogleAppID":"584099846573",
 	"GoogleSetupRun":true,

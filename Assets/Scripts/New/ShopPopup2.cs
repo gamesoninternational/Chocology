@@ -174,7 +174,7 @@ public class ShopPopup2 : MonoBehaviour
                 Debug.Log("SUCCESSSUCCESS "+_iapID);
                 
                 lockGroup.gameObject.SetActive(false);
-                if (_iapID.Equals(Config.IAP_ID.removead.ToString()))
+                if (_iapID.Equals(Config.IAP_ID.removeads.ToString()))
                 {
                     Config.SetRemoveAd();
                     Config.SetBuyIAP(configPackData.idPack);

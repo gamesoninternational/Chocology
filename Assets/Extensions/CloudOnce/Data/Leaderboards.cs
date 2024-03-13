@@ -16,7 +16,7 @@ namespace CloudOnce
     {
         private static readonly UnifiedLeaderboard s_chocologyLeaderboard = new UnifiedLeaderboard("ChocologyLeaderboard",
 #if !UNITY_EDITOR && (UNITY_IOS || UNITY_TVOS)
-            ""
+            "com.gameson.chocologyleaderboard"
 #elif !UNITY_EDITOR && UNITY_ANDROID && CLOUDONCE_GOOGLE
             "CgkIrbPB-P8QEAIQAg"
 #else
@@ -38,7 +38,7 @@ namespace CloudOnce
 
         private static readonly Dictionary<string, UnifiedLeaderboard> s_leaderboardDictionary = new Dictionary<string, UnifiedLeaderboard>
         {
-            { "ChocologyLeaderboard", s_chocologyLeaderboard },
+            { "ChocologyLeaderboard", s_chocologyLeaderboard }
         };
     }
 }

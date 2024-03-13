@@ -39,7 +39,7 @@ public class RemoveAdButton : MonoBehaviour
 
     private void TouchRemoveAd()
     {
-        PurchaserManager.instance.BuyConsumable(Config.IAP_ID.removead, (string _iapID, PurchaserManager.IAP_CALLBACK_STATE _state) =>
+        PurchaserManager.instance.BuyConsumable(Config.IAP_ID.removeads, (string _iapID, PurchaserManager.IAP_CALLBACK_STATE _state) =>
         {
             if (_state == PurchaserManager.IAP_CALLBACK_STATE.SUCCESS)
             {
@@ -47,10 +47,10 @@ public class RemoveAdButton : MonoBehaviour
                 Debug.Log("SUCCESSSUCCESS "+_iapID);
                 
                 lockGroup.gameObject.SetActive(false);
-                if (_iapID.Equals(Config.IAP_ID.removead.ToString()))
+                if (_iapID.Equals(Config.IAP_ID.removeads.ToString()))
                 {
                     Config.SetRemoveAd();
-                    Config.SetBuyIAP(Config.IAP_ID.removead);
+                    Config.SetBuyIAP(Config.IAP_ID.removeads);
                     NotificationPopup.instance.AddNotification("RemoveAd Success!");
 
                     Init_Button();

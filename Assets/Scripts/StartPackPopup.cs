@@ -26,7 +26,7 @@ public class StartPackPopup : MonoBehaviour
         // InitPacks();
         btnClose.OnPointerClickCallBack_Completed.AddListener(TouchClose);
         btnBuy.OnPointerClickCallBack_Completed.AddListener(TouchBuy);
-        Debug.Log("Config.IAP_ID.starter_pack.ToString()): " + Config.IAP_ID.tilematch_starter_pack.ToString());
+        Debug.Log("Config.IAP_ID.starter_pack.ToString()): " + Config.IAP_ID.tilematch_starter_packs.ToString());
         popup.GetComponent<BBUIView>().HideBehavior.onCallback_Completed.AddListener(HidePopup_Finished);
     }
 
@@ -51,7 +51,7 @@ public class StartPackPopup : MonoBehaviour
     public void InitIAP() {
         if (PurchaserManager.instance.IsInitialized())
         {
-            txtPrice.text = PurchaserManager.instance.GetLocalizedPriceString(Config.IAP_ID.tilematch_starter_pack.ToString());
+            txtPrice.text = PurchaserManager.instance.GetLocalizedPriceString(Config.IAP_ID.tilematch_starter_packs.ToString());
             btnBuy.Interactable = true;
         }
         else {
@@ -86,12 +86,12 @@ public class StartPackPopup : MonoBehaviour
         BuyStartPackSuccess();
         return;
 #endif
-        PurchaserManager.instance.BuyConsumable(Config.IAP_ID.tilematch_starter_pack, (string _iapID, PurchaserManager.IAP_CALLBACK_STATE _state) =>
+        PurchaserManager.instance.BuyConsumable(Config.IAP_ID.tilematch_starter_packs, (string _iapID, PurchaserManager.IAP_CALLBACK_STATE _state) =>
         {
             if (_state == PurchaserManager.IAP_CALLBACK_STATE.SUCCESS)
             {
                 lockGroup.gameObject.SetActive(false);
-                if (_iapID.Equals(Config.IAP_ID.tilematch_starter_pack.ToString()))
+                if (_iapID.Equals(Config.IAP_ID.tilematch_starter_packs.ToString()))
                 {
                     //Buy
                     btnBuy.Interactable = false;

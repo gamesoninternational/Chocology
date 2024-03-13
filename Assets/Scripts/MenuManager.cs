@@ -79,7 +79,7 @@ public class MenuManager : MonoBehaviour
     public void SetBuyStarterPackSuccess()
     {
         btnRemoveAd.gameObject.SetActive(!Config.GetRemoveAd());
-        btnGift.gameObject.SetActive(!Config.GetBuyIAP(Config.IAP_ID.tilematch_starter_pack));
+        btnGift.gameObject.SetActive(!Config.GetBuyIAP(Config.IAP_ID.tilematch_starter_packs));
     }
 
 
@@ -192,7 +192,7 @@ public class MenuManager : MonoBehaviour
 
         sequenceShowView.InsertCallback(0.4f, () =>
         {
-            if (!Config.GetBuyIAP(Config.IAP_ID.tilematch_starter_pack))
+            if (!Config.GetBuyIAP(Config.IAP_ID.tilematch_starter_packs))
             {
                 //btnGift.gameObject.SetActive(true);
                 //btnGift.GetComponent<BBUIView>().ShowView();

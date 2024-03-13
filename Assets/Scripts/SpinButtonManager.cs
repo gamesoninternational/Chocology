@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+#if UNITY_ANDROID
 using Unity.Notifications.Android;
+#endif
 using System;
 
 public class SpinButtonManager : MonoBehaviour

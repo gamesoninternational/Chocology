@@ -134,7 +134,7 @@ public class ShopPopup : MonoBehaviour
             if (_state == PurchaserManager.IAP_CALLBACK_STATE.SUCCESS)
             {
                 lockGroup.gameObject.SetActive(false);
-                if (_iapID.Equals(Config.IAP_ID.removead.ToString()))
+                if (_iapID.Equals(Config.IAP_ID.removeads.ToString()))
                 {
                     Config.SetRemoveAd();
                     NotificationPopup.instance.AddNotification("RemoveAd Success!");

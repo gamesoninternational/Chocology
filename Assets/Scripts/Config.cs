@@ -587,20 +587,20 @@ public class Config
 
     public enum IAP_ID
     {
-        tilematch_starter_pack,
+        tilematch_starter_packs,
         piggy_bank,
-        removead,
+        removeads,
         removead_and_combo10,
         combo_10,
         undo_10,
         suggest_10,
         shuffle_10,
-        coin_1000,
-        growth_bundle,
-        deluxe_bundle,
-        premium_bundle,
-        coin_2000,
-        coin_5000,
+        coins_1000,
+        growth_bundles,
+        deluxe_bundles,
+        premium_bundles,
+        coins_2000,
+        coins_5000,
         tile_special_offer,
     }
 
