@@ -14,25 +14,25 @@ using UnityEngine.UI;
 public class ShopPopup2 : MonoBehaviour
 {
     public static ShopPopup2 instance;
-    
+
     public BBUIView popup;
 
     public BBUIButton btnClose;
     public GameObject lockGroup;
     public ScrollRect scrollView;
-    
+
     private void Awake()
     {
         instance = this;
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
         PurchaserManager.InitializeSucceeded += PurchaserManager_InitializeSucceeded;
         popup.ShowBehavior.onCallback_Completed.AddListener(ShowView_Finished);
         popup.HideBehavior.onCallback_Completed.AddListener(HideView_Finished);
-        
+
         btnClose.OnPointerClickCallBack_Completed.AddListener(TouchClose);
         btnLoadMores.OnPointerClickCallBack_Completed.AddListener(TouchLoadMore);
 
@@ -44,7 +44,7 @@ public class ShopPopup2 : MonoBehaviour
         PurchaserManager.InitializeSucceeded -= PurchaserManager_InitializeSucceeded;
         popup.ShowBehavior.onCallback_Completed.RemoveAllListeners();
         popup.HideBehavior.onCallback_Completed.RemoveAllListeners();
-        
+
         btnClose.OnPointerClickCallBack_Completed.RemoveAllListeners();
         btnLoadMores.OnPointerClickCallBack_Completed.RemoveAllListeners();
     }
@@ -52,7 +52,7 @@ public class ShopPopup2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     [Button("OpenPopup")]
@@ -60,9 +60,9 @@ public class ShopPopup2 : MonoBehaviour
     {
         lockGroup.SetActive(true);
         gameObject.SetActive(true);
-        
+
         InitLoadMores();
-        
+
         scrollView.verticalNormalizedPosition = 1f;
         ShowViews();
     }
@@ -72,7 +72,7 @@ public class ShopPopup2 : MonoBehaviour
         SoundManager.instance.PlaySound_Popup();
         lockGroup.SetActive(true);
 
-       
+
 
         StartCoroutine(ShowViews_IEnumerator());
     }
@@ -81,16 +81,16 @@ public class ShopPopup2 : MonoBehaviour
     {
         popup.gameObject.SetActive(false);
         btnClose.gameObject.SetActive(false);
-        
+
         yield return new WaitForSeconds(0.1f);
         popup.gameObject.SetActive(true);
         popup.ShowView();
-        
+
         yield return new WaitForSeconds(0.1f);
         btnClose.gameObject.SetActive(true);
         btnClose.GetComponent<BBUIView>().ShowView();
     }
-    
+
     private void ShowView_Finished()
     {
         lockGroup.SetActive(false);
@@ -120,7 +120,7 @@ public class ShopPopup2 : MonoBehaviour
         {
             listLoadMore_ItemShops[i].SetActive(true);
         }
-        
+
         loadMoreObj.SetActive(false);
         InitIAP_RemoveAd();
     }
@@ -133,9 +133,9 @@ public class ShopPopup2 : MonoBehaviour
             listLoadMore_ItemShops[i].SetActive(false);
         }
     }
-    
-    
-    
+
+
+
     #endregion
 
     #region REMOVE_AD
@@ -153,26 +153,27 @@ public class ShopPopup2 : MonoBehaviour
             iapRemoveAd.gameObject.SetActive(true);
         }
     }
- 
+
     #endregion
 
 
-    
-    
+
+
 
     #region IAP
     public List<ItemShopIAP> listItemShopIAPs = new List<ItemShopIAP>();
-    public void TouchBuy_ShopItem(ConfigPackData configPackData) {
-        Debug.Log("TouchBuy_ShopItem"+configPackData.idPack.ToString());
+    public void TouchBuy_ShopItem(ConfigPackData configPackData)
+    {
+        Debug.Log("TouchBuy_ShopItem" + configPackData.idPack.ToString());
         lockGroup.gameObject.SetActive(true);
-
+        LoadingManager.Instance.SpawnLoading();
         PurchaserManager.instance.BuyConsumable(configPackData.idPack, (string _iapID, PurchaserManager.IAP_CALLBACK_STATE _state) =>
         {
             if (_state == PurchaserManager.IAP_CALLBACK_STATE.SUCCESS)
             {
-                
-                Debug.Log("SUCCESSSUCCESS "+_iapID);
-                
+
+                Debug.Log("SUCCESSSUCCESS " + _iapID);
+
                 lockGroup.gameObject.SetActive(false);
                 if (_iapID.Equals(Config.IAP_ID.removeads.ToString()))
                 {
@@ -196,6 +197,7 @@ public class ShopPopup2 : MonoBehaviour
                 NotificationPopup.instance.AddNotification("Buy Fail!");
                 GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_cancel");
             }
+            LoadingManager.Instance.CloseLoading();
         });
 
 
@@ -211,22 +213,24 @@ public class ShopPopup2 : MonoBehaviour
         {
             GamePlayManager.instance.OpenRewardPopup(configPackData.configItemShopDatas, false);
         }
-        
+
         gameObject.SetActive(false);
     }
 
 
-    private void PurchaserManager_InitializeSucceeded() {
+    private void PurchaserManager_InitializeSucceeded()
+    {
         InitIAP();
     }
-    
-    private void InitIAP() {
+
+    private void InitIAP()
+    {
         for (int i = 0; i < listItemShopIAPs.Count; i++)
         {
             listItemShopIAPs[i].InitIAP();
         }
 
-        
+
     }
     #endregion
 }

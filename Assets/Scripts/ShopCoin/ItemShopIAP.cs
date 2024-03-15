@@ -36,6 +36,7 @@ public class ItemShopIAP : MonoBehaviour
 
     private void TouchBuy()
     {
+        LoadingManager.Instance.SpawnLoading();
         if (ShopPopup2.instance != null && ShopPopup2.instance.isActiveAndEnabled)
         {
             ShopPopup2.instance.TouchBuy_ShopItem(configPackData);
