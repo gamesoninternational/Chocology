@@ -75,6 +75,7 @@ public class WinPopup : MonoBehaviour
                 NotificationPopup.instance.AddNotification("Buy Fail!");
                 GlobalVar.CallAnalytics($"payment_{configPackData.idPack}_cancel");
             }
+            LoadingManager.Instance.CloseLoading();
         });
     }
 
