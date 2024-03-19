@@ -114,10 +114,6 @@ public class LevelPopup : MonoBehaviour
 
     public void InitLevels()
     {
-
-
-
-
         int currentMap = 0;
         Config.GetCurrLevel();
 
@@ -149,13 +145,13 @@ public class LevelPopup : MonoBehaviour
                 {
                     lvlButton.numberText.text = currentlvl.ToString();
                     lvlButton.button.onClick.AddListener(() => MenuManager.instance.SelectLevel(int.Parse(lvlButton.numberText.text)));
-                    if (Config.LevelStar(currentlvl) > 0)
+                    if (Config.currLevel >= currentlvl)
                     {
-                        lvlButton.SetActive(false, Config.LevelStar(currentlvl), true);
+                        lvlButton.SetActive(true, Config.LevelStar(currentlvl), true);
                     }
                     else
                     {
-                        lvlButton.SetActive((currentlvl == Config.currLevel), Config.LevelStar(currentlvl), false);
+                        lvlButton.SetActive(false, Config.LevelStar(currentlvl), false);
                     }
 
                     currentlvl++;
