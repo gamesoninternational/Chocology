@@ -115,67 +115,51 @@ public class LevelPopup : MonoBehaviour
     public void InitLevels()
     {
 
-        //for (int i = 0; i < Config.MAX_LEVEL; i++) {
-        //    ItemLevel itemLevel = Instantiate(itemLevelPrefab, content);
 
-        //    InfoLevel infoLevel = new InfoLevel(i + 1, 0);
-        //    if (Config.currDic_LevelStars.ContainsKey(infoLevel.level)) {
-        //        infoLevel.star = Config.currDic_LevelStars[infoLevel.level];
-        //    }
 
-        //    itemLevel.SetInitItemLevel(infoLevel);
-        //}
 
-        //scrollRect.verticalNormalizedPosition = 1f;
-        int total_level_per_Map = Config.MAX_LEVEL / mapMaker.biomes.Count;
         int currentMap = 0;
         Config.GetCurrLevel();
+
+        //get the list of the map object per level button
+        List<int> totalLevelPerMap = new List<int>();
+        foreach (var a in mapMaker.biomes)
+        {
+            //spawn the map button
+            a.Create();
+            a.snapButtonsToCurve = true;
+            a.SetButtonsPositionOnCurve();
+
+            //get the total level permap
+            totalLevelPerMap.Add(a.count);
+        }
 
         if (!DoneCreateMap)
         {
             DoneCreateMap = true;
+            int currentlvl = 1;
             for (int map = mapMaker.biomes.Count - 1; map >= 0; map--)
             {
 
                 int indexMap = map;
-                int startLevel = (currentMap) * total_level_per_Map + 1;
-                int endLevel = (currentMap + 1) * total_level_per_Map;
+                int startLevel = (currentMap) * mapMaker.biomes[indexMap].count + 1;
+                int endLevel = startLevel + mapMaker.biomes[indexMap].count;
 
-                mapMaker.biomes[indexMap].count = total_level_per_Map;
-                mapMaker.biomes[indexMap].Create();
-                mapMaker.biomes[indexMap].SetButtonsPositionOnCurve();
-
-
-                for (int level = startLevel; level <= endLevel && level <= Config.MAX_LEVEL;)
+                foreach (var lvlButton in mapMaker.biomes[indexMap].levelButtons)
                 {
-
-                    for (int level_button = 0; level_button < mapMaker.biomes[indexMap].levelButtons.Count; level_button++)
+                    lvlButton.numberText.text = currentlvl.ToString();
+                    lvlButton.button.onClick.AddListener(() => MenuManager.instance.SelectLevel(int.Parse(lvlButton.numberText.text)));
+                    if (Config.LevelStar(currentlvl) > 0)
                     {
-                        int currentLevel = level;
-                        mapMaker.biomes[indexMap].levelButtons[level_button].button.onClick.AddListener(() => MenuManager.instance.SelectLevel(currentLevel));
-                        mapMaker.biomes[indexMap].levelButtons[level_button].numberText.text = currentLevel.ToString();
-                        if (Config.LevelStar(currentLevel) > 0)
-                        {
-                            mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(false, Config.LevelStar(currentLevel), true);
-                        }
-                        else
-                        {
-
-                            if (currentLevel == Config.currLevel)
-                            {
-                                mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(true, Config.LevelStar(currentLevel), false);
-                            }
-                            else
-                            {
-                                mapMaker.biomes[indexMap].levelButtons[level_button].SetActive(false, Config.LevelStar(currentLevel), false);
-                            }
-
-                        }
-
-                        level++;
+                        lvlButton.SetActive(false, Config.LevelStar(currentlvl), true);
                     }
-                }
+                    else
+                    {
+                        lvlButton.SetActive((currentlvl == Config.currLevel), Config.LevelStar(currentlvl), false);
+                    }
 
+                    currentlvl++;
+                }
                 currentMap++;
             }
         }

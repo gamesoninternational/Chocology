@@ -2,7 +2,7 @@
 using UnityEngine;
 
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
 #endif
 
 namespace Mkey
@@ -13,8 +13,7 @@ namespace Mkey
         public GameObject levelButtonPrefab;
         public int count;
         public List<LevelButton> levelButtons;
-        [SerializeField]
-        private bool snapButtonsToCurve = true;
+        public bool snapButtonsToCurve = true;
         [HideInInspector]
         [SerializeField]
         private bool snapButtonsToCurveOld = false;
@@ -42,6 +41,12 @@ namespace Mkey
         public void Create()
         {
             LevelButton[] existingButtons = GetComponentsInChildren<LevelButton>();
+
+            if (TryGetComponent<SceneCurve>(out SceneCurve sc))
+            {
+                count = sc.HandlesCount;
+            }
+
 
             bool rebuildInOldPositions = false;
             Vector3[] existingPositions = new Vector3[existingButtons.Length];
@@ -110,6 +115,16 @@ namespace Mkey
                 else CreateButton(level);
             }
             SetButtonsPositionOnCurve();
+        }
+
+        public void RemoveAllButtons()
+        {
+            if (levelButtons == null || levelButtons.Count <= 0) return;
+
+            foreach (var a in levelButtons)
+                DestroyImmediate(a.gameObject);
+            count = 0;
+
         }
 
         private void CreateButton()
@@ -193,6 +208,12 @@ namespace Mkey
                     Undo.RecordObject(biome, "ReBuild  LevelButtons");
                     EditorUtility.SetDirty(biome);
                     biome.Create();
+                }
+
+                if (GUILayout.Button("Remove all buttons"))
+                {
+                    EditorUtility.SetDirty(biome);
+                    biome.RemoveAllButtons();
                 }
             }
         }
