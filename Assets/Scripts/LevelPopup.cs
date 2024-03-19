@@ -117,18 +117,14 @@ public class LevelPopup : MonoBehaviour
         int currentMap = 0;
         Config.GetCurrLevel();
 
-        //get the list of the map object per level button
-        List<int> totalLevelPerMap = new List<int>();
-        foreach (var a in mapMaker.biomes)
-        {
-            //spawn the map button
-            a.Create();
-            a.snapButtonsToCurve = true;
-            a.SetButtonsPositionOnCurve();
-
-            //get the total level permap
-            totalLevelPerMap.Add(a.count);
-        }
+        if (!DoneCreateMap)
+            foreach (var a in mapMaker.biomes)
+            {
+                //spawn the map button
+                a.Create();
+                a.snapButtonsToCurve = true;
+                a.SetButtonsPositionOnCurve();
+            }
 
         if (!DoneCreateMap)
         {
