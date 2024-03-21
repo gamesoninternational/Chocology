@@ -139,6 +139,7 @@ public class LevelPopup : MonoBehaviour
 
                 foreach (var lvlButton in mapMaker.biomes[indexMap].levelButtons)
                 {
+                    lvlButton.SetActive(false, 0, false);
                     lvlButton.numberText.text = currentlvl.ToString();
                     lvlButton.button.onClick.AddListener(() => MenuManager.instance.SelectLevel(int.Parse(lvlButton.numberText.text)));
                     if (Config.currLevel >= currentlvl)
