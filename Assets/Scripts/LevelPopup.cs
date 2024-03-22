@@ -9,6 +9,7 @@ using DG.Tweening;
 using Mkey;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -116,6 +117,24 @@ public class LevelPopup : MonoBehaviour
     {
         int currentMap = 0;
         Config.GetCurrLevel();
+
+        if (mapMaker.biomes.Count == 0)
+        {
+            mapMaker.biomes = mapMaker.GetComponentsInChildren<Biome>().ToList();
+
+            for (int i = 0; i < mapMaker.biomes.Count; i++)
+            {
+                //swap
+                if (i < (mapMaker.biomes.Count - 1 - i))
+                {
+                    break;
+                }
+
+                var temp = mapMaker.biomes[i];
+                mapMaker.biomes[i] = mapMaker.biomes[mapMaker.biomes.Count - 1 - i];
+                mapMaker.biomes[mapMaker.biomes.Count - 1 - i] = temp;
+            }
+        }
 
         if (!DoneCreateMap)
             foreach (var a in mapMaker.biomes)
