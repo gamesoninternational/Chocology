@@ -38,7 +38,7 @@ public class StarGroup : MonoBehaviour
                     if (score <= 0)
                     {
                         score = 0;
-                        //GamePlayManager.instance.SetGameLose();
+                        GamePlayManager.instance.SetGameLose();
                         isCountDownTime = false;
                     }
                     UpdateScore();

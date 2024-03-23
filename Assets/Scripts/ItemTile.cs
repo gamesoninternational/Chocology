@@ -8,6 +8,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Threading.Tasks;
+
 public class ItemTile : MonoBehaviour
 {
 
@@ -66,7 +68,8 @@ public class ItemTile : MonoBehaviour
 
     bool isCheckTouchCount = false;
 
-    public void InitTile(int _indexShow,int _indexOnMap, int _floorIndex, Vector2Int _posTile, ItemData _itemData) {
+    public void InitTile(int _indexShow, int _indexOnMap, int _floorIndex, Vector2Int _posTile, ItemData _itemData)
+    {
 
         indexOnMap = _indexOnMap;
         indexShowTile = _indexShow;
@@ -86,10 +89,12 @@ public class ItemTile : MonoBehaviour
     }
 
 
-    private void ShowTile() {
+    private void ShowTile()
+    {
         itemTileState = Config.ITEMTILE_STATE.START_TO_FLOOR;
         //Debug.Log("floorIndex:"+ floorIndex);
-        if (Config.listStartMoveType[floorIndex] == Config.START_MOVE_TYPE.BOTTOM) {
+        if (Config.listStartMoveType[floorIndex] == Config.START_MOVE_TYPE.BOTTOM)
+        {
             gameObject.transform.localPosition = new Vector3(TILE_SIZE * posTile.x, TILE_SIZE * posTile.y - 20f, pZ);
         }
         else if (Config.listStartMoveType[floorIndex] == Config.START_MOVE_TYPE.TOP)
@@ -106,35 +111,73 @@ public class ItemTile : MonoBehaviour
         }
 
         //indexShowTile * 0.01f +
-        gameObject.transform.DOLocalMove(new Vector3(TILE_SIZE * posTile.x, TILE_SIZE * posTile.y, pZ), 1f).SetEase(Ease.InBack).SetDelay(0.04f* floorIndex).OnComplete(() => {
+        gameObject.transform.DOLocalMove(new Vector3(TILE_SIZE * posTile.x, TILE_SIZE * posTile.y, pZ), 1f).SetEase(Ease.InBack).SetDelay(0.04f * floorIndex).OnComplete(() =>
+        {
             itemTileState = Config.ITEMTILE_STATE.FLOOR;
             itemTileCheckCollision.gameObject.SetActive(true);
         });
     }
 
 
-    public void SetTouch_Avaiable(bool _isTouchAvaiable) {
+    public void SetTouch_Avaiable(bool _isTouchAvaiable)
+    {
         itemTileCheckCollision.gameObject.transform.localPosition = new Vector3(0f, 0f, 0.5f);
         touchCollider2D.enabled = _isTouchAvaiable;
     }
 
+    Coroutine _routineActive;
     public void SetTouch_Enable()
     {
-        StartCoroutine(SetTouch_Avaiable_IEnumerator());
+        try
+        {
+            if (gameObject.activeSelf)
+                SetTouchAsync();
+        }
+        catch { }
+
     }
 
-    public IEnumerator SetTouch_Avaiable_IEnumerator() {
+    private void OnDisable()
+    {
+        SetTouchAsync();
+    }
+
+    public async void SetTouchAsync()
+    {
+        try
+        {
+            await Task.Delay(100);
+            SetTouch_Avaiable(true);
+            SetShadow_Avaiable(false);
+        }
+        catch
+        {
+
+        }
+    }
+
+    public IEnumerator SetTouch_Avaiable_IEnumerator()
+    {
+        if (!gameObject.activeSelf)
+        {
+            StopCoroutine(_routineActive);
+            yield break;
+        }
+
         yield return new WaitForSeconds(0.1f);
         SetTouch_Avaiable(true);
         SetShadow_Avaiable(false);
+
     }
 
 
-    public void SetShadow_Avaiable(bool isShadowAvaiable) {
+    public void SetShadow_Avaiable(bool isShadowAvaiable)
+    {
         shadow.gameObject.SetActive(isShadowAvaiable);
     }
 
-    public bool GetTouch_Avaiable() {
+    public bool GetTouch_Avaiable()
+    {
         return touchCollider2D.enabled;
     }
 
@@ -148,12 +191,13 @@ public class ItemTile : MonoBehaviour
     public void OnMouseDown()
     {
         isMouseDown = true;
-//        Debug.Log("OnMouseDown:    " + gameObject.name);
+        //        Debug.Log("OnMouseDown:    " + gameObject.name);
     }
 
     public void OnMouseUp()
     {
-        if (isMouseDown) {
+        if (isMouseDown)
+        {
             isMouseDown = false;
             SetTouchItemTile();
         }
@@ -165,7 +209,8 @@ public class ItemTile : MonoBehaviour
             objGroup.transform.DOScale(Vector3.one, 0.1f).SetEase(Ease.Linear);
         }
 
-        if (isTileTutorial) {
+        if (isTileTutorial)
+        {
             if (bg.sortingLayerName.Equals("TutHover"))
             {
                 SetLayer_Floor();
@@ -175,7 +220,8 @@ public class ItemTile : MonoBehaviour
     }
 
 
-    public void SetTouchItemTile() {
+    public void SetTouchItemTile()
+    {
         if (Config.gameState == Config.GAME_STATE.PLAYING)
         {
             if (itemTileState == Config.ITEMTILE_STATE.FLOOR)
@@ -189,7 +235,8 @@ public class ItemTile : MonoBehaviour
                 if (Config.CheckTutorial_4() && Config.isShowTut4) return;
 
 
-                if (!GameLevelManager.instance.IsItemTileMoveToSlot()) {
+                if (!GameLevelManager.instance.IsItemTileMoveToSlot())
+                {
                     Debug.Log("Chua the chuyen xuong slot");
                     return;
                 }
@@ -240,7 +287,7 @@ public class ItemTile : MonoBehaviour
             }
         }
     }
-   
+
 
     private void OnMouseExit()
     {
@@ -255,12 +302,14 @@ public class ItemTile : MonoBehaviour
         //    }
         //}
 
-        if (bg.sortingLayerName.Equals("Hover")) {
+        if (bg.sortingLayerName.Equals("Hover"))
+        {
             SetLayer_Floor();
             objGroup.transform.DOScale(Vector3.one, 0.1f).SetEase(Ease.Linear);
         }
 
-        if (isTileTutorial) {
+        if (isTileTutorial)
+        {
             if (bg.sortingLayerName.Equals("TutHover"))
             {
                 SetLayer_Floor();
@@ -270,8 +319,9 @@ public class ItemTile : MonoBehaviour
     }
 
 
-    public void SetLayer_Move() {
-       
+    public void SetLayer_Move()
+    {
+
         bg.sortingLayerName = "Move";
         icon.sortingLayerName = "Move";
         shadow.sortingLayerName = "Move";
@@ -298,10 +348,12 @@ public class ItemTile : MonoBehaviour
         itemTileCheckCollision.gameObject.transform.localPosition = new Vector3(0f, 0f, 0.5f);
     }
 
-    public void SetLayer_Floor() {
+    public void SetLayer_Floor()
+    {
         isMouseDown = false;
         string sortingLayerName = "Floor" + (floorIndex + 1);
-        if (isTileTutorial) {
+        if (isTileTutorial)
+        {
             sortingLayerName = "Tut";
         }
         bg.sortingLayerName = sortingLayerName;
@@ -312,7 +364,8 @@ public class ItemTile : MonoBehaviour
     }
 
 
-    public void SetOrderLayer_Move(int indexSlot) {
+    public void SetOrderLayer_Move(int indexSlot)
+    {
         int sortingOrder = 10 * indexSlot;
         bg.sortingOrder = sortingOrder;
         icon.sortingOrder = sortingOrder;
@@ -322,31 +375,34 @@ public class ItemTile : MonoBehaviour
 
     public void SetOrderLayer_Floor()
     {
-        int sortingOrder = 400 -20 * posTile.y + posTile.x;
+        int sortingOrder = 400 - 20 * posTile.y + posTile.x;
         bg.sortingOrder = sortingOrder;
         icon.sortingOrder = sortingOrder;
         shadow.sortingOrder = sortingOrder;
     }
 
-#region MOVE
+    #region MOVE
 
     Sequence moveToSlot_Sequence;
-    public void SetMoveToSlot(int indexSlot) {
+    public void SetMoveToSlot(int indexSlot)
+    {
         DOTween.Kill(gameObject.transform);
-        
+
         SetOrderLayer_Move(indexSlot);
         SetLayer_Move();
 
         moveToSlot_Sequence = DOTween.Sequence();
         moveToSlot_Sequence.Insert(0f, objGroup.transform.DOScale(Vector3.one * 1.1f, 0.1f).SetEase(Ease.OutQuad));
-        moveToSlot_Sequence.Insert(0f, objGroup.transform.DOLocalRotate(new Vector3(0f,0f,Random.Range(10f,15f)), 0.1f));
+        moveToSlot_Sequence.Insert(0f, objGroup.transform.DOLocalRotate(new Vector3(0f, 0f, Random.Range(10f, 15f)), 0.1f));
         moveToSlot_Sequence.Insert(0.1f, objGroup.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.InQuad));
         moveToSlot_Sequence.Insert(0.1f, objGroup.transform.DOLocalRotate(Vector3.zero, 0.2f).SetEase(Ease.InQuad));
-        moveToSlot_Sequence.InsertCallback(0.1f,()=> {
+        moveToSlot_Sequence.InsertCallback(0.1f, () =>
+        {
             SoundManager.instance.PlaySound_Wind();
         });
         moveToSlot_Sequence.Insert(0f, gameObject.transform.DOLocalMove(Vector3.zero, 0.3f).SetEase(Ease.OutQuad));
-        moveToSlot_Sequence.OnComplete(()=> {
+        moveToSlot_Sequence.OnComplete(() =>
+        {
             itemTileState = Config.ITEMTILE_STATE.SLOT;
             SoundManager.instance.PlaySound_BlockMoveFinish();
             GameLevelManager.instance.SetMoveItemSlot_Finished(this);
@@ -354,28 +410,32 @@ public class ItemTile : MonoBehaviour
     }
 
 
-    public void ResetPosSlot(int indexSlot) {
+    public void ResetPosSlot(int indexSlot)
+    {
         SetOrderLayer_Move(indexSlot);
     }
-#endregion
+    #endregion
 
-#region SLOT
+    #region SLOT
     Sequence match_Sequence;
-    public void SetItemTile_Match3(System.Action itemTileSlot_Match3_CallBack) {
+    public void SetItemTile_Match3(System.Action itemTileSlot_Match3_CallBack)
+    {
         match_Sequence = DOTween.Sequence();
         match_Sequence.Insert(0f, objGroup.transform.DOScale(Vector3.one * 1.1f, 0.1f).SetEase(Ease.OutQuad));
         match_Sequence.Insert(0f, objGroup.transform.DOLocalRotate(new Vector3(0f, 0f, Random.Range(10f, 15f)), 0.1f));
         match_Sequence.Insert(0.1f, objGroup.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InQuad));
         match_Sequence.Insert(0.1f, objGroup.transform.DOLocalRotate(Vector3.zero, 0.2f).SetEase(Ease.InQuad));
-        match_Sequence.OnComplete(() => {
+        match_Sequence.OnComplete(() =>
+        {
             itemTileSlot_Match3_CallBack.Invoke();
         });
     }
-#endregion
+    #endregion
 
-#region UNDO
+    #region UNDO
     Sequence moveUndo_Sequence;
-    public void SetItemTile_Undo() {
+    public void SetItemTile_Undo()
+    {
         DOTween.Kill(gameObject.transform);
 
         SetOrderLayer_Move(0);
@@ -387,31 +447,35 @@ public class ItemTile : MonoBehaviour
         moveUndo_Sequence.Insert(0.05f, objGroup.transform.DOScale(Vector3.one, 0.1f).SetEase(Ease.InQuad));
         moveUndo_Sequence.Insert(0.05f, objGroup.transform.DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.InQuad));
         moveUndo_Sequence.Insert(0f, gameObject.transform.DOLocalMove(new Vector3(TILE_SIZE * posTile.x, TILE_SIZE * posTile.y, pZ), 0.2f).SetEase(Ease.OutQuad));
-        moveUndo_Sequence.OnComplete(() => {
+        moveUndo_Sequence.OnComplete(() =>
+        {
             itemTileState = Config.ITEMTILE_STATE.FLOOR;
             SetItemTile_Undo_Finished();
         });
     }
 
-    public void SetItemTile_Undo_Now() {
+    public void SetItemTile_Undo_Now()
+    {
         gameObject.transform.localPosition = new Vector3(TILE_SIZE * posTile.x, TILE_SIZE * posTile.y, pZ);
         itemTileState = Config.ITEMTILE_STATE.FLOOR;
         SetItemTile_Undo_Finished();
     }
 
-    private void SetItemTile_Undo_Finished() {
+    private void SetItemTile_Undo_Finished()
+    {
         SetTouch_Avaiable(true);
         SetOrderLayer_Floor();
         SetLayer_Floor();
         itemTileCheckCollision.gameObject.SetActive(true);
         itemTileCheckCollision.gameObject.transform.localPosition = new Vector3(0f, 0f, 0.5f);
     }
-#endregion
+    #endregion
 
 
-#region SHUFFLE
+    #region SHUFFLE
     Sequence moveShuffle_Sequence;
-    public void SetItemTile_Shuffle(ItemData _itemData) {
+    public void SetItemTile_Shuffle(ItemData _itemData)
+    {
         itemData = _itemData;
         moveShuffle_Sequence = DOTween.Sequence();
         moveShuffle_Sequence.Insert(0f, objGroup.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.OutQuad));
@@ -422,20 +486,23 @@ public class ItemTile : MonoBehaviour
         });
         moveShuffle_Sequence.Insert(0.1f, objGroup.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.InQuad));
         moveShuffle_Sequence.Insert(0.1f, objGroup.transform.DOLocalRotate(Vector3.zero, 0.2f).SetEase(Ease.InQuad));
-        moveShuffle_Sequence.OnComplete(()=> {
+        moveShuffle_Sequence.OnComplete(() =>
+        {
             SetLayer_Floor();
             itemTileCheckCollision.gameObject.transform.localPosition = new Vector3(0f, 0f, 0.5f);
         });
     }
 
-    public void SetItemTile_Shuffle_ChangeItemData() {
+    public void SetItemTile_Shuffle_ChangeItemData()
+    {
         icon.sprite = Resources.Load<Sprite>("Sprite/" + Config.currTheme.ToString() + "/" + (int)itemData.itemType);
     }
-#endregion
+    #endregion
 
-#region SUGGEST
+    #region SUGGEST
 
-    public void SetItemTileSuggest() {
+    public void SetItemTileSuggest()
+    {
         itemTileCheckCollision.gameObject.SetActive(false);
         SetLayer_Move();
         SetTouch_Avaiable(false);
@@ -449,7 +516,8 @@ public class ItemTile : MonoBehaviour
 
     #region TUT
     bool isTileTutorial = false;
-    public void SetItemTileTut() {  
+    public void SetItemTileTut()
+    {
         isTileTutorial = true;
         string sortingLayerName = "Tut";
         bg.sortingLayerName = sortingLayerName;
