@@ -164,7 +164,7 @@ PlayerSettings:
     iPhone: 1
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 16
+  AndroidBundleVersionCode: 20
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 34
   AndroidPreferredInstallLocation: 0
@@ -282,7 +282,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: ef58a51a47beacb458a3b3fbf87028a6, type: 3}
+      m_Icon: {fileID: 2800000, guid: 7ea609411702796498694fa481512e10, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -820,7 +820,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: ODIN_INSPECTOR;dUI_MANAGER;GLEY_ADMOB;GLEY_PATCH_ADMOB;USE_ADMOB_BSPLABS;USE_UNITYADS_BSPLABS;USE_IRONSOURCE_BSPLABS;USE_ADMOB_BSPLABS_PATCH;USE_APPLOVIN_BSPLABS;CLOUDONCE_GOOGLE
+    Android: ODIN_INSPECTOR;dUI_MANAGER;GLEY_ADMOB;GLEY_PATCH_ADMOB;USE_IRONSOURCE_BSPLABS;CLOUDONCE_GOOGLE
     CloudRendering: dUI_MANAGER
     EmbeddedLinux: dUI_MANAGER
     GameCoreScarlett: dUI_MANAGER
@@ -837,7 +837,7 @@ PlayerSettings:
     WebGL: dUI_MANAGER
     Windows Store Apps: dUI_MANAGER
     XboxOne: dUI_MANAGER
-    iPhone: dUI_MANAGER;ODIN_INSPECTOR;USE_ADMOB_BSPLABS;USE_UNITYADS_BSPLABS;USE_APPLOVIN_BSPLABS;USE_IRONSOURCE_BSPLABS;USE_ADMOB_BSPLABS_PATCH
+    iPhone: dUI_MANAGER;ODIN_INSPECTOR;USE_IRONSOURCE_BSPLABS
     tvOS: dUI_MANAGER
   additionalCompilerArguments: {}
   platformArchitecture: {}
