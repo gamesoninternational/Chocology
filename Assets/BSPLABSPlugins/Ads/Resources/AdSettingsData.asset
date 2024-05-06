@@ -13,110 +13,32 @@ MonoBehaviour:
   m_Name: AdSettingsData
   m_EditorClassIdentifier: 
   mediationSettings:
-  - advertiser: 0
-    advertiserName: Admob
-    bannerSettings:
-      adType: 1
-      orderAndroid: 1
-      orderiOS: 1
-      orderWindows: 1
-      weightAndroid: 80
-      weightiOS: 80
-      weightWindows: 80
-    interstitialSettings:
-      adType: 2
-      orderAndroid: 1
-      orderiOS: 1
-      orderWindows: 1
-      weightAndroid: 80
-      weightiOS: 80
-      weightWindows: 80
-    rewardedSettings:
-      adType: 3
-      orderAndroid: 1
-      orderiOS: 1
-      orderWindows: 1
-      weightAndroid: 80
-      weightiOS: 80
-      weightWindows: 80
-  - advertiser: 6
-    advertiserName: AppLovin
-    bannerSettings:
-      adType: 1
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
-    interstitialSettings:
-      adType: 2
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
-    rewardedSettings:
-      adType: 3
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
-  - advertiser: 4
-    advertiserName: Unity
-    bannerSettings:
-      adType: 1
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
-    interstitialSettings:
-      adType: 2
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
-    rewardedSettings:
-      adType: 3
-      orderAndroid: 0
-      orderiOS: 0
-      orderWindows: 0
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
   - advertiser: 9
     advertiserName: IronSource
     bannerSettings:
       adType: 1
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
+      orderAndroid: 1
+      orderiOS: 1
+      orderWindows: 1
+      weightAndroid: 1
+      weightiOS: 1
+      weightWindows: 1
     interstitialSettings:
       adType: 2
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
+      orderAndroid: 1
+      orderiOS: 1
+      orderWindows: 1
+      weightAndroid: 1
+      weightiOS: 1
+      weightWindows: 1
     rewardedSettings:
       adType: 3
-      orderAndroid: 4
-      orderiOS: 4
-      orderWindows: 4
-      weightAndroid: 20
-      weightiOS: 20
-      weightWindows: 20
+      orderAndroid: 1
+      orderiOS: 1
+      orderWindows: 1
+      weightAndroid: 1
+      weightiOS: 1
+      weightWindows: 1
   advertiserSettings:
   - advertiser: 2
     useSDK: 0
@@ -168,7 +90,7 @@ MonoBehaviour:
       hasRewarded: 1
       directedForChildren: 0
   - advertiser: 0
-    useSDK: 1
+    useSDK: 0
     preprocessorDirective: USE_ADMOB_BSPLABS
     sdkLink: https://github.com/googleads/googleads-mobile-unity/releases
     platformSettings:
@@ -315,7 +237,7 @@ MonoBehaviour:
       hasRewarded: 1
       directedForChildren: 0
   - advertiser: 4
-    useSDK: 1
+    useSDK: 0
     preprocessorDirective: USE_UNITYADS_BSPLABS
     sdkLink: https://assetstore.unity.com/packages/add-ons/services/unity-monetization-66123
     platformSettings:
@@ -435,7 +357,7 @@ MonoBehaviour:
       hasRewarded: 1
       directedForChildren: 0
   - advertiser: 6
-    useSDK: 1
+    useSDK: 0
     preprocessorDirective: USE_APPLOVIN_BSPLABS
     sdkLink: https://dash.applovin.com/documentation/mediation/unity/getting-started/integration
     platformSettings:
