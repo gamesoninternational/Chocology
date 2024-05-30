@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Redcode.Awaiting;
+using System.IO;
 
 public class TimerFromServer : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class TimerFromServer : MonoBehaviour
     {
         instance = this;
         DontDestroyOnLoad(this);
-
+        GetDataNotification();
         NotificationPermission();
 
         dateTimeNowOnServer = await GetRealDateTimeFromAPTask();
@@ -133,4 +134,94 @@ public class TimerFromServer : MonoBehaviour
         }
 
     }
+
+
+    #region NOTIFICATION DAILY FROM API
+    public void GetDataNotification()
+    {
+        StartCoroutine(GetTime());
+    }
+    IEnumerator DownloaderImageNotif(string url)
+    {
+        string _splitUrl = Path.GetFileName(url);
+        string _urlPath = Path.Combine(Application.persistentDataPath, _splitUrl);
+        if (!File.Exists(_urlPath))
+        {
+            using (var uwr = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET))
+            {
+                uwr.downloadHandler = new DownloadHandlerFile(_urlPath);
+                yield return uwr.SendWebRequest();
+                if (uwr.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError(uwr.error);
+                    yield break;
+                }
+            }
+        }
+    }
+    IEnumerator GetTime()
+    {
+        using UnityWebRequest webRequest = UnityWebRequest.Get("https://gameson.r3ste.mobi/VCPushNotification.json");
+        {
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isDone)
+            {
+                if (webRequest.error == null)
+                {
+                    var newDataAPI = JsonUtility.FromJson<NotificationAPI>(webRequest.downloadHandler.text);
+                    Debug.Log(newDataAPI.ToString());
+
+                    if (newDataAPI != null)
+                    {
+                        if (newDataAPI.Notification.Count > 0)
+                        {
+                            foreach (var notif in newDataAPI.Notification)
+                            {
+                                //create the timer
+                                var jams = notif.Jam.Split('.');
+                                string jam = jams[0] + ":" + jams[1];
+                                DateTime _timeSeconds = DateTime.ParseExact(jam, "HH:mm", null);
+                                DateTime _timerDate = _timeSeconds;
+
+                                if (DateTime.Now > _timerDate)
+                                {
+                                    _timerDate = _timerDate.AddDays(1);
+                                }
+
+                                //download image if exist
+                                if (!string.IsNullOrEmpty(notif.Image))
+                                {
+                                    yield return StartCoroutine(DownloaderImageNotif(notif.Image));
+                                }
+
+                                //create notification
+                                GlobalVar.CreateNotification(notif.Code, notif.Title, notif.Title, notif.Message, _timerDate, (notif.Loop == 1)
+                                    , true, new TimeSpan(24, 0, 0));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    [Serializable]
+    class NotificationAPI
+    {
+        public List<NotificationAPIData> Notification;
+    }
+
+    [Serializable]
+    class NotificationAPIData
+    {
+        public int Loop = 0;
+        public string Code = "";
+        public string Title = "";
+        public string Message = "";
+        public string Jam = "";
+        public string Image = "";
+    }
+    #endregion
+
 }

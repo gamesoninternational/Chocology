@@ -11,6 +11,7 @@ using System.Net;
 using Newtonsoft.Json;
 using UnityEngine.Android;
 using UnityEngine.Playables;
+using System.IO;
 
 #if UNITY_ANDROID
 using Unity.Notifications.Android;
@@ -191,10 +192,28 @@ public static class GlobalVar
     public static void CreateSpinClaimNotification(DateTime _fireTime)
     => CreateNotification("spin_claim", "Daily Reward", "Daily Reward", "Hey players, your free spin is ready to claim up!!", _fireTime);
 
-    static void CreateNotification(string _id, string _name, string _notifTitle, string _notifText, DateTime _fireTime , bool _IsClearAuto = true)
+    public static bool TryGetNotifImagePath(string path)
+    {
+        string urlImage = Path.Combine(Application.persistentDataPath, path);
+        if (File.Exists(Path.Combine(Application.persistentDataPath, path)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static void CreateNotification(string _id, string _name, string _notifTitle, string _notifText, DateTime _fireTime, bool _loop = false, bool _cancelIfSame = false, TimeSpan _repeateTime = default, string _notifImage = "")
     {
 
 #if UNITY_ANDROID
+
+        //cancel the duplicate notification that we create
+        if (_cancelIfSame)
+            AndroidNotificationCenter.CancelNotification(_id.GetHashCode());
+
         var channel = new AndroidNotificationChannel()
         {
             Id = _id,
@@ -208,11 +227,30 @@ public static class GlobalVar
         notif.Title = _notifTitle;
         notif.Text = _notifText;
         notif.FireTime = _fireTime;
-        notif.ShouldAutoCancel = _IsClearAuto;
+        notif.ShouldAutoCancel = true;
+        if (TryGetNotifImagePath(_notifImage))
+        {
+            string urlImage = Path.Combine(Application.persistentDataPath, _notifImage);
+            notif.BigPicture = new BigPictureStyle
+            {
+                Picture = urlImage
+            };
+
+        }
+
+        if (_loop)
+        {
+
+            notif.RepeatInterval = (_repeateTime == default) ? new TimeSpan(24, 0, 0) : _repeateTime;
+        }
         var idNotif = AndroidNotificationCenter.SendNotification(notif, _id);
 #endif
 
 #if UNITY_IOS
+
+   if(_cancelIfSame)
+            iOSNotificationCenter.RemoveScheduledNotification(_id);
+
 var notifIos = new iOSNotification()
         {
             Identifier = _id,
@@ -226,7 +264,7 @@ var notifIos = new iOSNotification()
             Trigger = new iOSNotificationTimeIntervalTrigger()
             {
                 TimeInterval = _fireTime - TimerFromServer.instance.dateTimeNowOnServer,
-                Repeats = false
+                Repeats = _loop 
             }
         };
         iOSNotificationCenter.ScheduleNotification(notifIos);
