@@ -355,7 +355,7 @@ namespace BsplabsMobileAds
             {
                 if (currentAdvertiser.useSDK)
                 {
-                    allAdvertisers.Add(new Advertiser(go.AddComponent<CustomAppLovin>(), adSettings.GetAdvertiserSettings(SupportedAdvertisers.AppLovin), adSettings.GetPlaftormSettings(SupportedAdvertisers.AppLovin)));
+//                    allAdvertisers.Add(new Advertiser(go.AddComponent<CustomAppLovin>(), adSettings.GetAdvertiserSettings(SupportedAdvertisers.AppLovin), adSettings.GetPlaftormSettings(SupportedAdvertisers.AppLovin)));
                 }
             }
 

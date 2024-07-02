@@ -524,11 +524,11 @@ namespace Gley.MobileAds.Editor
             advertiser = advertiserSettings.Find(cond => cond.advertiser == SupportedAdvertisers.AppLovin);
             if (advertiser == null)
             {
-                advertiserSettings.Add(new AdvertiserSettings(new ApplovinSettings()));
+//                advertiserSettings.Add(new AdvertiserSettings(new ApplovinSettings()));
             }
             else
             {
-                advertiser?.UpdateSettings(new ApplovinSettings());
+ //               advertiser?.UpdateSettings(new ApplovinSettings());
             }
 
             //Vungle
