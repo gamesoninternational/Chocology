@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708708, g: 0.37838137, b: 0.35725543, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25697,6 +25697,8 @@ MonoBehaviour:
   txtPrice: {fileID: 681715815}
   txtContent: {fileID: 736102591}
   imgBankCoinProgress: {fileID: 806628173}
+  rewardPopup: {fileID: 0}
+  menu_CoinGroup: {fileID: 0}
 --- !u!224 &1860859485 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4939025418354778567, guid: 18b9f21d1a8df4a2d9d303915a0fba8c,
@@ -57381,6 +57383,7 @@ MonoBehaviour:
   popup: {fileID: 5496280799052020357}
   lockGroup: {fileID: 5496280800130743859}
   txtCounStar: {fileID: 5496280799667860719}
+  mapMaker: {fileID: 0}
 --- !u!1 &5496280800362384744
 GameObject:
   m_ObjectHideFlags: 0
@@ -57710,7 +57713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &8191889835741024960
 CanvasRenderer:
   m_ObjectHideFlags: 0

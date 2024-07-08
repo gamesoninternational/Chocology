@@ -166,7 +166,7 @@ public class GamePlayManager : MonoBehaviour
         btnShuffle.gameObject.SetActive(false);
         starGroup.gameObject.SetActive(false);
         //btnWatchVideo.gameObject.SetActive(false);
-        btnRemoveAds.gameObject.SetActive(false);
+        //btnRemoveAds.gameObject.SetActive(false);
         txtLevel.gameObject.SetActive(false);
         btnPigBank.gameObject.SetActive(false);
         bgFooter.gameObject.SetActive(false);
@@ -260,8 +260,8 @@ public class GamePlayManager : MonoBehaviour
             //btnWatchVideo.gameObject.SetActive(true);
             //btnWatchVideo.GetComponent<BBUIView>().ShowView();
 
-            btnRemoveAds.gameObject.SetActive(true);
-            btnRemoveAds.GetComponent<BBUIView>().ShowView();
+            //btnRemoveAds.gameObject.SetActive(true);
+            //btnRemoveAds.GetComponent<BBUIView>().ShowView();
 
 
             btnShuffle.gameObject.SetActive(true);
@@ -502,7 +502,7 @@ public class GamePlayManager : MonoBehaviour
         btnPause.Interactable = false;
         btnPigBank.Interactable = false;
         //btnWatchVideo.Interactable = false;
-        btnRemoveAds.Interactable = false;
+        //btnRemoveAds.Interactable = false;
         btnShuffle.Interactable = false;
         btnUndo.Interactable = false;
         btnSuggest.Interactable = false;
@@ -727,7 +727,7 @@ public class GamePlayManager : MonoBehaviour
         btnPause.Interactable = true;
         btnPigBank.Interactable = true;
         //btnWatchVideo.Interactable = true;
-        btnRemoveAds.Interactable = true;
+        //btnRemoveAds.Interactable = true;
         btnShuffle.Interactable = true;
         btnUndo.Interactable = true;
         btnSuggest.Interactable = true;

@@ -116,7 +116,7 @@ public static class GlobalVar
             Debug.Log($"Calling {_parameterName}");
             if (Application.isMobilePlatform)
             {
-                Firebase.Analytics.FirebaseAnalytics.LogEvent(_parameterName);
+                //Firebase.Analytics.FirebaseAnalytics.LogEvent(_parameterName);
 
             }
         }
