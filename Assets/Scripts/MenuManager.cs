@@ -109,6 +109,8 @@ public class MenuManager : MonoBehaviour
     {
         //SceneManager.LoadScene("Play");
         HideView();
+        Debug.Log("Click Play Game");
+        //AdjustManager.instance.PlayGame();
     }
     int countHack = 0;
     public void TouchParty()

@@ -2,7 +2,7 @@
 //  Adjust.h
 //  Adjust SDK
 //
-//  V4.37.0
+//  V4.38.2
 //  Created by Christian Wellenbrock (@wellle) on 23rd July 2013.
 //  Copyright (c) 2012-2021 Adjust GmbH. All rights reserved.
 //
@@ -21,15 +21,14 @@ typedef void(^AdjustResolvedDeeplinkBlock)(NSString * _Nonnull resolvedLink);
 
 @interface AdjustTestOptions : NSObject
 
-@property (nonatomic, copy, nullable) NSString *baseUrl;
-@property (nonatomic, copy, nullable) NSString *gdprUrl;
-@property (nonatomic, copy, nullable) NSString *subscriptionUrl;
-@property (nonatomic, copy, nullable) NSString *purchaseVerificationUrl;
+@property (nonatomic, copy, nullable) NSString *urlOverwrite;
 @property (nonatomic, copy, nullable) NSString *extraPath;
 @property (nonatomic, copy, nullable) NSNumber *timerIntervalInMilliseconds;
 @property (nonatomic, copy, nullable) NSNumber *timerStartInMilliseconds;
 @property (nonatomic, copy, nullable) NSNumber *sessionIntervalInMilliseconds;
 @property (nonatomic, copy, nullable) NSNumber *subsessionIntervalInMilliseconds;
+@property (nonatomic, copy, nullable) NSNumber *attStatusInt;
+@property (nonatomic, copy, nullable) NSString *idfa;
 @property (nonatomic, assign) BOOL teardown;
 @property (nonatomic, assign) BOOL deleteState;
 @property (nonatomic, assign) BOOL noBackoffWait;
@@ -58,6 +57,7 @@ extern NSString * __nonnull const ADJAdRevenueSourceHeliumChartboost;
 extern NSString * __nonnull const ADJAdRevenueSourcePublisher;
 extern NSString * __nonnull const ADJAdRevenueSourceTopOn;
 extern NSString * __nonnull const ADJAdRevenueSourceADX;
+extern NSString * __nonnull const ADJAdRevenueSourceTradplus;
 
 /**
  * Constants for country app's URL strategies.

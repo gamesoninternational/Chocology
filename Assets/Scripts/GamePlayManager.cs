@@ -79,6 +79,8 @@ public class GamePlayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AdjustManager.instance.PlayGame();
+        Debug.Log("Play Game");
         //API.ShowBanner(Gley.MobileAds.BannerPosition.Bottom, Gley.MobileAds.BannerType.Banner);
         BspLabsAdsMobile.Instance.ShowBanner(BannerPosition.BOTTOM, BannerType.Banner);
         lockGroup.SetActive(true);
