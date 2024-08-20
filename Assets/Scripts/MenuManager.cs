@@ -86,7 +86,8 @@ public class MenuManager : MonoBehaviour
     public void TouchShop()
     {
         shopPopup.OpenPopup();
-    }
+        AdjustManager.instance.ShopOpen();
+    }   
 
 
     public void TouchSpin()

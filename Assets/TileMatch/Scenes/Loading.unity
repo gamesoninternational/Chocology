@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708708, g: 0.37838137, b: 0.35725543, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -727,6 +727,76 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AdjustManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: HintToken
+      value: 9tob9d
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: ShopOpenToken
+      value: apsza2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: NextLevelToken
+      value: brj6pe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: BackToHomeToken
+      value: l8dv09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: LevelClearToken
+      value: 8uvy63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: LevelFailedToken
+      value: kj0vgp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: RestartGameToken
+      value: kml3op
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: BreakPiggyBankToken
+      value: ay9ti0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: ContinueWithAdsToken
+      value: 3ru7kt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: LuckySpinClaimedToken
+      value: oi0cof
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: IAPPurchasedFailedToken
+      value: kx0ylm
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: ContinueWith100CoinToken
+      value: b3f2hq
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: IAPPurchasedSuccessToken
+      value: 6nelit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893941515200984680, guid: a31383219223a4b6d85ab60230b55287,
+        type: 3}
+      propertyPath: BonusLevelClearRewardClaimedToken
+      value: y3embh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

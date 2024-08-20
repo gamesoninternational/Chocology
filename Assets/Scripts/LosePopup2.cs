@@ -64,11 +64,14 @@ public class LosePopup2 : MonoBehaviour
 
         Config.interstitialAd_countLose++;
         Debug.Log("COUNT LOSE = " + Config.interstitialAd_countLose);
+        Debug.Log("Level Failed");
+        AdjustManager.instance.LevelFailed();
         if (Config.interstitialAd_countLose == 2)
         {
             Config.interstitialAd_countLose = 0;
             API.ShowInterstitial();
             BspLabsAdsMobile.Instance.ShowInterstitial();
+            
         }
 
 
@@ -195,7 +198,7 @@ public class LosePopup2 : MonoBehaviour
         {
             //API.ShowRewardedVideo(CompleteMethod);
             BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
-
+            AdjustManager.instance.ContinueWithAds();
         }
         else
         {
@@ -236,8 +239,9 @@ public class LosePopup2 : MonoBehaviour
             rewardAction = REWARD_ACTION.REVIVE;
             popupReward.HideView();
             GameLevelManager.instance.Revive();
-            
+            AdjustManager.instance.ContinueWith100Coin();
             GamePlayManager.instance.SetRevive_Success();
+
         }
         else
         {
@@ -275,7 +279,7 @@ public class LosePopup2 : MonoBehaviour
     private void TouchHome()
     {
         lockGroup.gameObject.SetActive(true);
-      
+            AdjustManager.instance.BackToHome();
         
             SceneManager.LoadScene("Menu");
         
@@ -284,7 +288,7 @@ public class LosePopup2 : MonoBehaviour
     private void TouchRestart()
     {
         lockGroup.gameObject.SetActive(true);
-     
+            AdjustManager.instance.RestartGame();
         
             GamePlayManager.instance.SetReplayGame();
         

@@ -2076,6 +2076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configLevelGame:
     timeA: 0.1
+    timercountdown: 10
     listScrore_Stars:
     - 0
     - 25

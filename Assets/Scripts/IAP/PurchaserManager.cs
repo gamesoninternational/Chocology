@@ -325,10 +325,12 @@ public class PurchaserManager : MonoBehaviour, IStoreListener
             // Unlock the appropriate content here.
             PurchaserManager_Callback.Invoke(args.purchasedProduct.definition.id, IAP_CALLBACK_STATE.SUCCESS);
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+            AdjustManager.instance.IAPPurchasedSuccess();
         }
         else
         {
             PurchaserManager_Callback.Invoke(args.purchasedProduct.definition.id, IAP_CALLBACK_STATE.FAIL);
+            AdjustManager.instance.IAPPurchasedFailed();
         }
 
 

@@ -445,6 +445,8 @@ public class GameLevelManager : MonoBehaviour
             API.ShowInterstitial();
             BspLabsAdsMobile.Instance.ShowInterstitial();
         }
+        Debug.Log("Level Clear");
+        AdjustManager.instance.LevelClear();
             
         //Debug.LogError("GAME WIN");
         //PlayerPrefs.SetInt("CURREN_LEVEL", GamePlayManager.instance.level + 1);

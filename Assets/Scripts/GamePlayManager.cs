@@ -406,7 +406,7 @@ public class GamePlayManager : MonoBehaviour
             {
                 HideTut3();
             }
-            
+            AdjustManager.instance.Hint();
             //FirebaseManager.instance.LogUsePowerUp(FirebaseManager.POWERUP_HINT, level);
         }
         else {
@@ -703,7 +703,7 @@ public class GamePlayManager : MonoBehaviour
         if (Config.gameState == Config.GAME_STATE.PLAYING)
         {
             OpenPiggyBankPopup();
-
+            AdjustManager.instance.BreakPiggyBank();
             HideTut_HandGuide();
         }
     }

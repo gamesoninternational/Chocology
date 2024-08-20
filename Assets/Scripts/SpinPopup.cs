@@ -111,7 +111,7 @@ public class SpinPopup : MonoBehaviour
             lockGroup.gameObject.SetActive(false);
             //WatchAds
             WatchAds_Finished();
-
+            AdjustManager.instance.LuckySpinClaimed();
             //reset notification
             GlobalVar.CreateSpinClaimNotification(TimerFromServer.instance.dateTimeNowOnServer.AddSeconds(Config.TIME_SPIN));
             Debug.Log("Message Will appear in : " + Config.TIME_SPIN +"h");

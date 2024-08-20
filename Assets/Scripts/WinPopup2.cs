@@ -49,6 +49,7 @@ public class WinPopup2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         popupReward.ShowBehavior.onCallback_Completed.AddListener(PopupReward_ShowView_Finished);
        // popupReward.HideBehavior.onCallback_Completed.AddListener(PopupReward_HideView_Finished);
         
@@ -289,10 +290,10 @@ public class WinPopup2 : MonoBehaviour
         if (BspLabsAdsMobile.Instance.IsRewardVideoAvailable())
         {
 
-           API.ShowRewardedVideo(CompleteMethod);
-           BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
-
-
+            API.ShowRewardedVideo(CompleteMethod);
+            BspLabsAdsMobile.Instance.ShowRewardedVideo(CompleteMethod);
+            Debug.Log("Bonus Level Clear Reward Claimed"); 
+            AdjustManager.instance.BonusLevelClearRewardClaimed();
         }
         else
         {
@@ -354,6 +355,7 @@ public class WinPopup2 : MonoBehaviour
        
         {
             GamePlayManager.instance.SetNextGame();
+            AdjustManager.instance.NextLevel();
         }
     }
 
@@ -363,6 +365,7 @@ public class WinPopup2 : MonoBehaviour
        
         {
             SceneManager.LoadScene("Menu");
+            AdjustManager.instance.BackToHome();
         }
     }
     
